@@ -49,6 +49,187 @@
 	backdrop-filter: none;
   z-index: 1;
 }
+
+/* --- 文章阅读体验优化 (Added by GitHub Copilot) --- */
+
+/* 1. 引入霞鹜文楷字体 (LXGW WenKai Screen) - 屏幕阅读优化的楷体 */
+@import url('https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css');
+
+/* 定义字体变量 */
+:root {
+  --font-serif: "LXGW WenKai Screen", "Noto Serif SC", sans-serif;
+  --font-sans: "LXGW WenKai Screen", "Noto Sans SC", sans-serif;
+  --font-reading: var(--font-sans); /* 文章正文默认字体 */
+  --line-height-reading: 1.8;       /* 更宽松的行高 */
+}
+
+/* 2. 针对文章正文的排版优化 */
+.markdown-body {
+  font-family: var(--font-reading) !important;
+  font-size: 1.125rem; /* 18px，比默认略大，提升易读性 */
+  line-height: var(--line-height-reading) !important;
+  letter-spacing: 0.02em; /* 轻微增加字间距 */
+  color: var(--va-c-text-1);
+}
+
+/* 优化段落 */
+.markdown-body p {
+  margin-bottom: 1.6em; /* 增加段落间距 */
+  text-align: justify;  /* 两端对齐，使版面更整洁 */
+}
+
+/* 优化标题 */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  font-weight: bold;
+  line-height: 1.3;
+  color: var(--va-c-text-1);
+}
+
+.markdown-body h2 {
+  position: relative;
+  padding-left: 1rem;
+  border-left: 4px solid var(--va-c-primary); /* 添加左侧强调色块 */
+}
+
+/* 优化引用块 */
+.markdown-body blockquote {
+  margin: 2em 0;
+  padding: 1em 1.5em;
+  color: var(--va-c-text-2);
+  background: var(--va-c-bg-soft); /* 柔和的背景色 */
+  border-left: 4px solid var(--va-c-primary);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+.markdown-body blockquote p {
+  margin: 0;
+}
+
+/* 优化列表 */
+.markdown-body ul, 
+.markdown-body ol {
+  padding-left: 2em;
+  margin-bottom: 1.5em;
+}
+
+.markdown-body li {
+  margin-bottom: 0.5em;
+}
+
+/* 优化图片 */
+.markdown-body img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* 给图片添加轻微阴影 */
+  margin: 1.5em auto;
+  display: block;
+}
+
+/* 优化内联代码和链接 */
+.markdown-body code {
+  color: var(--va-c-primary);
+  background-color: var(--va-c-bg-soft);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace; /* 保持代码字体 */
+}
+
+.markdown-body a {
+  text-decoration-style: dashed;
+  text-underline-offset: 4px;
+}
+
+/* 3. 代码块优化 */
+/* 字体引入：JetBrains Mono (编程字体) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+.markdown-body pre {
+  /* 布局与尺寸 */
+  position: relative;
+  /* 
+     增加顶部内边距到 3.6rem (~58px)，确保内容绝不会被圆点覆盖
+     使用 !important 防止被其他主题样式覆盖 
+  */
+  padding: 3.6rem 1.2rem 1.2rem !important; 
+  margin: 2em 0;
+  border-radius: 12px;
+  overflow: hidden; /* 确保圆角处内容不溢出 */
+  
+  /* 字体与排版 */
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace !important;
+  font-size: 0.9rem;
+  line-height: 1.7; /* 增加行高，提升代码可读性 */
+  
+  /* 边框与阴影 */
+  border: 1px solid rgba(0,0,0,0.08); 
+  box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.08);
+
+  /* 
+     标题栏模拟：
+     浅色模式下：加深灰色，提升对比度
+     高度固定为 2.8rem (~45px)
+  */
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.12) 0, rgba(0,0,0,0.12) 2.8rem, transparent 2.8rem);
+  background-repeat: no-repeat;
+}
+
+/* Mac 风格窗口控制点 - 1A1B1C 风格 */
+.markdown-body pre::before {
+  content: "";
+  position: absolute;
+  /* 垂直居中于 2.8rem 的标题栏内 (2.8rem / 2 ≈ 1.4rem top) */
+  top: 1rem;       
+  left: 1.2rem;    
+  width: 0.75rem;  /* ~12px */
+  height: 0.75rem;
+  border-radius: 50%;
+  
+  /* Mac 窗口按钮标准色 - 红 */
+  background-color: #ff5f56; 
+  
+  /*  黄、绿 (增加间距，避免拥挤) */
+  box-shadow: 1.4rem 0 0 #ffbd2e, 2.8rem 0 0 #27c93f; 
+  
+  z-index: 10;
+  opacity: 1; /* 保持常驻，清晰可见 */
+}
+
+/* 滚动条美化 */
+.markdown-body pre::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.markdown-body pre::-webkit-scrollbar-thumb {
+  background-color: rgba(125, 125, 125, 0.3);
+  border-radius: 4px;
+}
+
+.markdown-body pre::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* 暗色模式适配 */
+html.dark .markdown-body pre {
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  
+  /* 
+     暗色模式下的标题栏背景：
+     大幅加深黑色遮罩，使其显著黑于代码背景，形成强烈对比
+  */
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.55) 0, rgba(0,0,0,0.55) 2.8rem, transparent 2.8rem);
+}
+
+html.dark .markdown-body pre::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 .dark .va-card .content, .dark .post-card .content, .dark .post .post-content {
 	background: var(--card-bg-dark);
 }
@@ -167,6 +348,132 @@
 	position: relative;
 	border-radius: var(--radius-card, 20px) !important; /* 覆盖 rounded + fallback */
 	-webkit-mask-image: -webkit-radial-gradient(white, black); /* Safari 圆角裁剪兼容 */
+    overflow: hidden;
+}
+
+/* --- 4. 文章详情页特定优化 (圆角与卡片感) --- */
+
+/* 定义一套更现代的详情页圆角变量 */
+:root {
+  --radius-detail-card: 24px;   /* 文章卡片的大圆角 */
+  --radius-detail-inner: 16px;  /* 内部元素中等圆角 */
+  --shadow-detail-card: 0 12px 40px -12px rgba(0, 0, 0, 0.08); /* 柔和深邃的悬浮阴影 */
+}
+
+/* 针对文章详情页的主容器卡片 */
+/* 通常 Valaxy Yun 主题文章内容包裹在 .yun-card 中 */
+.valaxy-container .yun-card {
+  border-radius: var(--radius-detail-card) !important;
+  box-shadow: var(--shadow-detail-card) !important;
+  border: 1px solid rgba(0,0,0,0.03); /* 极细微边框 */
+  overflow: hidden; /* 裁剪溢出的图片或背景 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem; /* 增加底部间距 */
+}
+
+/* 强化文章顶部封面图 (Banner) 的圆角 */
+.post-header-image, 
+.post-cover-container,
+.markdown-body > p:first-child img {
+  border-radius: var(--radius-detail-inner); /* 确保首图有圆角 */
+  overflow: hidden;
+}
+
+/* 左侧边栏、右侧目录栏、小组件统一圆角，与主文章卡片保持一致 */
+/* 使用更广泛的选择器，确保覆盖所有侧边栏元素 */
+
+/* 1. 基础卡片类 (Base Card) */
+.yun-card, .va-card, .card {
+  border-radius: var(--radius-detail-card) !important;
+  box-shadow: var(--shadow-detail-card) !important;
+  border: 1px solid rgba(0,0,0,0.03);
+  overflow: hidden !important;
+}
+
+/* 2. 侧边栏直接子元素 (Aside / Sidebar Items) - 强制圆角 */
+/* 针对左侧“各种链接的小卡片” */
+.yun-aside > div, 
+.yun-sidebar > div,
+aside > div,
+.sidebar-inner > div {
+  border-radius: var(--radius-detail-card) !important;
+  overflow: hidden !important;
+  margin-bottom: 1.5rem !important; /* 增加卡片间距 */
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.08) !important; /* 给小卡片加点阴影 */
+  background: var(--card-bg); /* 移除硬编码的fallback，信任变量 */
+  backdrop-filter: blur(10px); /* 增加毛玻璃效果，提升质感 */
+}
+
+/* 3. 目录容器 (TOC) - 强制圆角 */
+/* 针对右侧目录 */
+.yun-toc-container,
+.post-toc,
+.toc-container,
+.valaxy-toc-container {
+  border-radius: var(--radius-detail-card) !important;
+  overflow: hidden !important;
+  padding: 1rem !important; /* 稍微增加内部留白 */
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+}
+
+/* 暗色模式下强制使用深色背景变量 (作为双重保险) */
+html.dark .yun-aside > div,
+html.dark .yun-sidebar > div,
+html.dark aside > div,
+html.dark .sidebar-inner > div,
+html.dark .yun-toc-container,
+html.dark .post-toc,
+html.dark .toc-container,
+html.dark .valaxy-toc-container {
+  background: var(--card-bg-dark, rgba(30, 30, 30, 0.6)) !important;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05); /* 增加微弱边框 */
+}
+
+/* 特殊处理：目录激活项指示条 */
+.yun-toc-item.active {
+  border-radius: 4px;
+}
+
+
+/* 评论区圆角 */
+#valine, .yun-comment, .comment-container {
+  border-radius: var(--radius-detail-card) !important;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+/* 文章正文内的大图默认圆角与动效 */
+.markdown-body img {
+  border-radius: var(--radius-detail-inner);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.markdown-body img:hover {
+  transform: scale(1.02); /* 悬停微放大 */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* 暗色模式适配 */
+html.dark .valaxy-container .yun-card,
+html.dark .yun-aside .yun-card,
+html.dark .yun-comment {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 手机端适配：虽然屏幕小，但圆角能增加精致感 */
+@media screen and (max-width: 768px) {
+  .valaxy-container .yun-card {
+    border-radius: 16px !important;
+    /* 稍作内缩，展现卡片感 */
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.yun-card.post-card-image {
 	mask-image: radial-gradient(circle, white, black); /* 标准属性 */
 	overflow: hidden; /* 确保封面裁剪与圆角一致 */
 	background: transparent;
@@ -269,3 +576,101 @@
 		border-radius: 999px;
 	}
 }
+
+/* --- 5. 布局修复：强制页脚 (Footer) 沉底 --- */
+/* 防止页面内容(如友链页)较少时页脚上浮 */
+/* 使用 min-height 策略，避免使用 flex/grid 破坏原有布局宽度 */
+
+/* 针对所有页面的主要内容区域 */
+.yun-main, 
+#yun-main,
+main, 
+.valaxy-container,
+.page-container {
+  /* 
+     min-height: calc(100vh - 160px);
+     解释：视口高度 - 预估的页头和页脚高度 (Banner 高度未计算在内，通常如果有Banner会自动撑高)
+     如果页面有 Banner，内容区+Banner 会超过 100vh (出现滚动条)，这是正常的。
+     如果页面无 Banner，此高度足以防止页脚上浮。
+  */
+  min-height: calc(100vh - 160px) !important; 
+  box-sizing: border-box; /* 确保 padding 包含在内 */
+}
+
+/* 针对友链页面的特定修正 (如果它使用了不同的容器类) */
+.page-links .yun-main,
+.page-links main {
+  min-height: calc(100vh - 160px) !important;
+}
+
+/* --- 6. 移动端深度优化 (Mobile Optimization) --- */
+@media screen and (max-width: 768px) {
+  /* 1. 布局与间距调整 */
+  .yun-main {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  /* 减小卡片圆角，节省空间 */
+  .valaxy-container .yun-card,
+  .yun-aside > div, 
+  .yun-sidebar > div,
+  .yun-card, .va-card, .card {
+    border-radius: 16px !important; 
+    margin-bottom: 1.2rem !important; /* 减小卡片间垂直间距 */
+  }
+
+  /* 2. 文章阅读体验 */
+  .markdown-body {
+    font-size: 1.05rem !important; /*稍微减小字号，避免一行字太少 */
+    text-align: left !important; /* 手机端两端对齐容易出现大片空白，改为左对齐更自然 */
+  }
+  
+  .markdown-body h1, .markdown-body h2 {
+    margin-top: 1.5em; /* 减小标题上方留白 */
+  }
+  
+  /* 代码块优化：允许横向滚动，减小内边距 */
+  .markdown-body pre {
+    padding: 2.8rem 0.8rem 0.8rem !important;
+    font-size: 0.85rem;
+    margin: 1.2em -10px !important; /* 负边距让代码块稍微宽一点，利用屏幕边缘 */
+    border-radius: 8px !important;
+    width: calc(100% + 20px) !important; /* 配合负边距 */
+  }
+
+  /* 3. 友链页面 (我的小伙伴们) 优化 */
+  /* 强制友链卡片在手机上一行显示 1 个或 2 个，视宽度而定 */
+  .yun-link-list, .links, .link-list {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+    gap: 10px !important;
+  }
+  
+  .yun-link-item, .link-item {
+    padding: 10px !important; /* 减小内部留白 */
+  }
+  
+  .yun-link-item .link-avatar, .link-item img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  /* 4. 隐藏不必要的侧边栏元素 (如果还在显示的话) */
+  .yun-aside {
+    display: none !important; /* 手机端通常不需要侧边栏，节省空间给正文 */
+  }
+  
+  /* 确保正文全宽 */
+  .yun-main {
+    width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  
+  /* 5. 导航栏与 Banner 调整 */
+  .yun-banner {
+    min-height: 200px; /* 减小 banner 高度 */
+  }
+}
+
+
+

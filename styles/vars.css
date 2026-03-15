@@ -23,5 +23,12 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --card-border: var(--card-border-dark);
+    --card-bg: var(--card-bg-dark); /* 自动适配系统暗色模式 */
   }
+}
+
+/* 适配 Valaxy 手动切换的暗色模式类名 */
+html.dark {
+  --card-border: var(--card-border-dark);
+  --card-bg: var(--card-bg-dark);
 }

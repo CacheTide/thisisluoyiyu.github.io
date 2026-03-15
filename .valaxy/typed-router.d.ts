@@ -46,12 +46,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/意外的多了很多感慨': RouteRecordInfo<'/posts/意外的多了很多感慨', '/posts/意外的多了很多感慨', Record<never, never>, Record<never, never>>,
     '/posts/怨念': RouteRecordInfo<'/posts/怨念', '/posts/怨念', Record<never, never>, Record<never, never>>,
     '/posts/云南之旅': RouteRecordInfo<'/posts/云南之旅', '/posts/云南之旅', Record<never, never>, Record<never, never>>,
-    '/posts/An SSH configuration error caused a failure during blog deployment': RouteRecordInfo<'/posts/An SSH configuration error caused a failure during blog deployment', '/posts/An SSH configuration error caused a failure during blog deployment', Record<never, never>, Record<never, never>>,
-    '/posts/Debian：Using WSL2 to run Debian': RouteRecordInfo<'/posts/Debian：Using WSL2 to run Debian', '/posts/Debian：Using WSL2 to run Debian', Record<never, never>, Record<never, never>>,
+    '/posts/An-SSH-configuration-error-caused-a-failure-during-blog-deployment': RouteRecordInfo<'/posts/An-SSH-configuration-error-caused-a-failure-during-blog-deployment', '/posts/An-SSH-configuration-error-caused-a-failure-during-blog-deployment', Record<never, never>, Record<never, never>>,
+    '/posts/Debian-Using-WSL2-to-run-Debian': RouteRecordInfo<'/posts/Debian-Using-WSL2-to-run-Debian', '/posts/Debian-Using-WSL2-to-run-Debian', Record<never, never>, Record<never, never>>,
     '/posts/First': RouteRecordInfo<'/posts/First', '/posts/First', Record<never, never>, Record<never, never>>,
-    '/posts/Free blog setup using Hexo and GitHub': RouteRecordInfo<'/posts/Free blog setup using Hexo and GitHub', '/posts/Free blog setup using Hexo and GitHub', Record<never, never>, Record<never, never>>,
+    '/posts/Free-blog-setup-using-Hexo-and-GitHub': RouteRecordInfo<'/posts/Free-blog-setup-using-Hexo-and-GitHub', '/posts/Free-blog-setup-using-Hexo-and-GitHub', Record<never, never>, Record<never, never>>,
+    '/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro': RouteRecordInfo<'/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro', '/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro', Record<never, never>, Record<never, never>>,
     '/posts/HRT100days自己的生活发生什么变化了吗1': RouteRecordInfo<'/posts/HRT100days自己的生活发生什么变化了吗1', '/posts/HRT100days自己的生活发生什么变化了吗1', Record<never, never>, Record<never, never>>,
-    '/posts/nx30pro Flashing the router firmware': RouteRecordInfo<'/posts/nx30pro Flashing the router firmware', '/posts/nx30pro Flashing the router firmware', Record<never, never>, Record<never, never>>,
+    '/posts/nx30pro-Flashing-the-router-firmware': RouteRecordInfo<'/posts/nx30pro-Flashing-the-router-firmware', '/posts/nx30pro-Flashing-the-router-firmware', Record<never, never>, Record<never, never>>,
     '/tags/': RouteRecordInfo<'/tags/', '/tags', Record<never, never>, Record<never, never>>,
   }
 }
