@@ -1,6 +1,6 @@
 ---
 layout: post
-title: “牛奶猫的任务罢了（part1）”
+title: 牛奶猫的任务罢了（part1）
 date: 2026-03-14 19:33:09
 cover: https://www.yiurblog.top/cywl.jpg
 categories: [技术]
