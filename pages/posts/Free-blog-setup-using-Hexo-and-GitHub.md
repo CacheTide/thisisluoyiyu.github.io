@@ -5,7 +5,7 @@ tags:
 - blog
 categories: [技术]
 date: 2024-08-13 19:21:21
-cover: https://www.yiurblog.top/cywl.jpg
+cover: https://www.cachetide.top/cywl.jpg
 ---
 
 # 基础准备

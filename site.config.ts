@@ -1,15 +1,15 @@
 import { defineSiteConfig } from 'valaxy'
 
 export default defineSiteConfig({
-  url: 'https://yiurblog.top/',
+  url: 'https://cachetide.top/',
   lang: 'zh-CN',
   title: '云边的小旅店',
   favicon: '/favicon.jpg',
   author: {
-    name: '洛忆雨Yiur',
-	avatar: 'https://www.yiurblog.top/head.jpg',
+    name: '编汐译梦CacheTide',
+	avatar: 'https://www.cachetide.top/favicon.jpg',
 	status: {
-      emoji: '😢'	
+      emoji: '😺'
     },
   },
   subtitle: '',
@@ -23,7 +23,7 @@ export default defineSiteConfig({
     },
     {
       name: 'GitHub',
-      link: 'https://github.com/thisisluoyiyu',
+      link: 'https://github.com/cachetide',
       icon: 'i-ri-github-line',
       color: '#6e5494',
     },
@@ -34,14 +34,20 @@ export default defineSiteConfig({
       color: '#FF8EB3',
     },
     {
+      name: '邮箱',
+      link: 'mailto:cachetide@pronton.me',
+      icon: 'i-ri-mail-line',
+      color: '#00A3EE',
+    },
+    {
       name: 'Twitter',
-      link: 'https://twitter.com/Project_Luo',
+      link: 'https://x.com/cachetide',
       icon: 'i-ri-twitter-x-fill',
       color: 'black',
     },
     {
       name: 'Telegram Channel',
-      link: 'https://t.me/Luo_yiyu',
+      link: 'https://t.me/',
       icon: 'i-ri-telegram-line',
       color: '#0088CC',
     },
@@ -57,19 +63,19 @@ export default defineSiteConfig({
     methods: [
       {
         name: '支付宝',
-        url: 'https://yiurblog.top/mikupayment2.png',
+        url: 'https://cachetide/mikupayment2.png',
         color: '#00A3EE',
         icon: 'i-ri-alipay-line',
       },
       {
         name: 'QQ 支付',
-        url: 'https://yiurblog.top/mikupayment1.png',
+        url: 'https://cachetide.top/mikupayment1.png',
         color: '#12B7F5',
         icon: 'i-ri-qq-line',
       },
       {
         name: '微信支付',
-        url: 'https://yiurblog.top/mikupayment3.png',
+        url: 'https://cachetide.top/mikupayment3.png',
         color: '#2DC100',
         icon: 'i-ri-wechat-pay-line',
       },

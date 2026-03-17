@@ -6,11 +6,11 @@ tags:
 - 旧
 abbrlink: fa9c883a
 date: 2023-10-14 21:23:32
-cover: https://www.yiurblog.top/cywl.jpg
+cover: https://www.cachetide.top/cywl.jpg
 
 ---
 
-### 诸位可以叫我*忆雨*或者*Yiur*，这里是我的第一篇博客。
+### 诸位可以叫我⬛⬛或者⬛⬛，这里是我的第一篇博客。
 
 ### 早在一年前的高二乃至两年前的高一，我已经在试着创建自己的博客了。不过由于最终的效果并不理想，两皆被放弃了，最后兜兜转转又回到了hexo+github（穷学生只能靠白嫖）这一方法。没有追求过多的华丽，平平淡淡才是真。
 

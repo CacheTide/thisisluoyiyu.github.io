@@ -5,7 +5,7 @@ tags:
   - blog
 date: 2025-01-12 17:27:42
 categories: [技术]
-cover: https://www.yiurblog.top/cywl.jpg
+cover: https://www.cachetide.top/cywl.jpg
 ---
 
 最近写好博客要部署的时候莫名其妙一直报错

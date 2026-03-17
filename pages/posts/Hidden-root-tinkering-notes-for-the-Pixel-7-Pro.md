@@ -2,7 +2,7 @@
 layout: post
 title: Pixel7pro隐藏root折腾笔记
 date: 2026-01-24 17:03:51
-cover: https://www.yiurblog.top/cywl.jpg
+cover: https://www.cachetide.top/cywl.jpg
 tags: [刷机,ROOT,Android,Pixel7pro]
 categories: [技术]
 ---

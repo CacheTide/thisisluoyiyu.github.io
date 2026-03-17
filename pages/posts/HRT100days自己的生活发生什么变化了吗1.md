@@ -4,7 +4,7 @@ tags:
   - MTF
 categories:
   - 记录
-cover: https://www.yiurblog.top/mafu.jpg
+cover: https://www.cachetide.top/mafu.jpg
 abbrlink: '33477785'
 date: 2024-11-10 19:03:35
 ---
