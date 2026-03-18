@@ -30,7 +30,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: 📦 Install Dependencies
-        run: npm i
+        run: npm i --legacy-peer-deps
 
       - name: 🌌 Build Valaxy Blog
         run: npm run build
