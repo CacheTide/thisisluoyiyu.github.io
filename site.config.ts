@@ -35,7 +35,7 @@ export default defineSiteConfig({
     },
     {
       name: '邮箱',
-      link: 'mailto:cachetide@pronton.me',
+      link: 'mailto:cachetide@proton.me',
       icon: 'i-ri-mail-line',
       color: '#00A3EE',
     },
