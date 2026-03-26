@@ -2,7 +2,7 @@
 layout: post
 title: 牛奶猫的任务罢了（part2）
 date: 2026-03-17 19:33:09
-cover: https://www.cachetide.top/cywl.jpg
+cover: https://www.cachetide.top/header5.jpg
 categories: [技术]
 tags: [docker,sm]
 ---
