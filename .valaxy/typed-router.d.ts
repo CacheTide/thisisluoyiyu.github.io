@@ -53,6 +53,7 @@ declare module 'vue-router/auto-routes' {
     '/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro': RouteRecordInfo<'/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro', '/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro', Record<never, never>, Record<never, never>>,
     '/posts/HRT100days自己的生活发生什么变化了吗1': RouteRecordInfo<'/posts/HRT100days自己的生活发生什么变化了吗1', '/posts/HRT100days自己的生活发生什么变化了吗1', Record<never, never>, Record<never, never>>,
     '/posts/Milk-cats-mission-part1': RouteRecordInfo<'/posts/Milk-cats-mission-part1', '/posts/Milk-cats-mission-part1', Record<never, never>, Record<never, never>>,
+    '/posts/Milk-cats-mission-part2': RouteRecordInfo<'/posts/Milk-cats-mission-part2', '/posts/Milk-cats-mission-part2', Record<never, never>, Record<never, never>>,
     '/posts/nx30pro-Flashing-the-router-firmware': RouteRecordInfo<'/posts/nx30pro-Flashing-the-router-firmware', '/posts/nx30pro-Flashing-the-router-firmware', Record<never, never>, Record<never, never>>,
     '/tags/': RouteRecordInfo<'/tags/', '/tags', Record<never, never>, Record<never, never>>,
   }

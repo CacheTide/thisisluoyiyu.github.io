@@ -418,15 +418,34 @@ aside > div,
 
 /* 3. 目录容器 (TOC) - 强制圆角 */
 /* 针对右侧目录 */
+.yun-aside > div,
 .yun-toc-container,
 .post-toc,
 .toc-container,
 .valaxy-toc-container {
   border-radius: var(--radius-detail-card) !important;
-  overflow: hidden !important;
+  overflow-y: auto !important; /* 允许超出部分滚动 */
+  max-height: 75vh; /* 限制最大高度，防止目录过长无法翻动 */
   padding: 1rem !important; /* 稍微增加内部留白 */
   background: var(--card-bg);
   backdrop-filter: blur(10px);
+}
+
+/* 美化目录滚动条 */
+.yun-aside > div::-webkit-scrollbar,
+.yun-toc-container::-webkit-scrollbar,
+.post-toc::-webkit-scrollbar,
+.toc-container::-webkit-scrollbar,
+.valaxy-toc-container::-webkit-scrollbar {
+  width: 4px;
+}
+.yun-aside > div::-webkit-scrollbar-thumb,
+.yun-toc-container::-webkit-scrollbar-thumb,
+.post-toc::-webkit-scrollbar-thumb,
+.toc-container::-webkit-scrollbar-thumb,
+.valaxy-toc-container::-webkit-scrollbar-thumb {
+  background: var(--va-c-divider);
+  border-radius: 4px;
 }
 
 /* 暗色模式下强制使用深色背景变量 (作为双重保险) */
@@ -444,7 +463,7 @@ html.dark .valaxy-toc-container {
 }
 
 /* 特殊处理：目录激活项指示条 */
-.yun-toc-item.active {
+.va-toc-item > .outline-link.active {
   border-radius: 4px;
 }
 
