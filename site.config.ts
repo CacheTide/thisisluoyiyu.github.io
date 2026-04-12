@@ -49,7 +49,7 @@ export default defineSiteConfig({
 
   search: {
     enable: true,
-    type: 'fuse'
+    provider: 'fuse'
   },
 
   sponsor: {

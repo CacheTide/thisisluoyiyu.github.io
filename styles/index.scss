@@ -491,25 +491,42 @@ html.dark:root .markdown-body pre.shiki::-webkit-scrollbar-thumb {
 /* 允许侧边栏本身正常滚动，覆盖上面的 overflow: hidden !important */
 .yun-aside {
   overflow-y: auto !important;
-  /* 高级毛玻璃背景与立体边缘 */
-  background: var(--card-bg) !important;
-  backdrop-filter: blur(16px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.4);
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: -8px 8px 32px -8px rgba(0, 0, 0, 0.08) !important;
-  border-radius: var(--radius-detail-card) !important;
-  padding: 1.2rem 0.5rem !important; /* 增加内边距让内容呼吸 */
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
+    box-sizing: border-box !important;
 
-/* 悬停侧边栏时轻微增强阴影，提升交互感 */
-.yun-aside:hover {
-  box-shadow: -12px 12px 40px -12px rgba(0, 0, 0, 0.12) !important;
-}
+    /* 恢复 Valaxy 原生 sticky 行为，去除我们强制指定的 !important，以免破坏原生响应式 */
 
-/* 隐藏侧边栏滚动条，只有在悬停或滚动时优雅显示（隐藏但保留功能） */
-.yun-aside::-webkit-scrollbar {
+    /* 修复与左侧/中间卡片的对齐：让它的静态起点和别人一致 */
+    margin-top: 0;
+
+    /* 毛玻璃与立体边缘 */
+
+    /* 毛玻璃与立体边缘 */
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(16px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: -8px 8px 32px -8px rgba(0, 0, 0, 0.08) !important;
+    border-radius: var(--radius-detail-card) !important;
+        padding: 1.5rem !important;
+
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  @media (min-width: 1280px) {
+    .yun-aside {
+      align-self: flex-start !important;
+      position: sticky !important;
+      top: var(--yun-margin-top, 68px) !important;
+    }
+  }
+
+  /* 去除悬停时的位移，防止在某些浏览器中打断 sticky 渲染或引起重新绘制 */
+  .yun-aside:hover {
+    box-shadow: -12px 12px 40px -12px rgba(0, 0, 0, 0.12) !important;
+    transform: none !important; /* 强制覆盖 va-card 的悬停位移 */
+  }
+  .yun-aside::-webkit-scrollbar {
   width: 4px;
 }
 .yun-aside::-webkit-scrollbar-thumb {
@@ -1030,4 +1047,6 @@ html {
 html.dark {
   color-scheme: dark;
 }
+
+
 

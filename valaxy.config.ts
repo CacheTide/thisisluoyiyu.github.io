@@ -1,5 +1,6 @@
 import type { UserThemeConfig } from 'valaxy-theme-yun'
 import { defineValaxyConfig } from 'valaxy'
+import { addonBangumi } from 'valaxy-addon-bangumi' 
 
 // add icons what you will need
 const safelist = [
@@ -16,7 +17,13 @@ export default defineValaxyConfig<UserThemeConfig>({
   addons: [
     'valaxy-addon-twikoo',
     'valaxy-addon-waline',
-    'valaxy-addon-artalk'
+    'valaxy-addon-artalk',
+    // 👇 2. 在这里追加 bangumi 插件配置
+    addonBangumi({
+      api: 'https://cachetide--eb2baf80366c11f1869342b51c65c3df.web.val.run',
+      bgmUid: '995914', 
+      bilibiliEnabled: false,
+    }),
   ],
 
    themeConfig: {
@@ -41,10 +48,10 @@ export default defineValaxyConfig<UserThemeConfig>({
         color: 'dodgerblue',
       },
       {
-        name: '喜欢的女孩子',
-        url: '/girls/',
-        icon: 'i-ri-women-line',
-        color: 'hotpink',
+        name: '追番列表',
+        url: '/bangumi/',
+        icon: 'i-ri-tv-line',
+        color: '#f09199',
       },
     ],
 
@@ -53,6 +60,7 @@ export default defineValaxyConfig<UserThemeConfig>({
       beian: {
         enable: true,
         icp: '',
+        police: '',
       },
     },
   },
