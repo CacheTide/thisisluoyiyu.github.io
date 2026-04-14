@@ -79,12 +79,21 @@ links:
     blog: zer0ptr's blog
     desc: 君との時間が一秒でも長くなるなら,ずっとじゃなくていい
     email: 
+    color: "#9370DB"
   - url: https://qijieya.cn/
     avatar: https://oss.qijieya.cn/1/hutao_hai.gif
     name: 祈杰
     blog: 祈杰のblog
     desc: 敬不完美的...明天
     email:
+    color: "#DC143C"
+  - url: https://0xsr.dev/
+    avatar: https://0xsr.dev/avatar-fixed.jpeg
+    name: SorrowRain
+    blog: SorrowRainのblog
+    desc: 
+    email:
+    color: "#FFFACD"
 random: true
 ---
 

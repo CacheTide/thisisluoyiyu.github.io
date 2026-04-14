@@ -188,13 +188,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/posts/番剧列表': RouteRecordInfo<
-      '/posts/番剧列表',
-      '/posts/%E7%95%AA%E5%89%A7%E5%88%97%E8%A1%A8',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/posts/诗（2023）': RouteRecordInfo<
       '/posts/诗（2023）',
       '/posts/%E8%AF%97%EF%BC%882023%EF%BC%89',
@@ -326,7 +319,7 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'node_modules/.pnpm/valaxy@0.28.4_@babel+parser@7.29.2_@nuxt+kit@3.21.2_magicast@0.5.2__@types+markdown-it@14.1.2_65d56ejvyxezmdt5p4q552bgje/node_modules/valaxy/client/pages/[...path].vue': {
+    'node_modules/.pnpm/valaxy@0.28.4_@babel+parser@7.29.2_@nuxt+kit@3.21.2_magicast@0.5.2__@types+markdown-it@_65004796f960e78532c336869c0da0b2/node_modules/valaxy/client/pages/[...path].vue': {
       routes:
         | '/[...path]'
       views:
@@ -455,12 +448,6 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/无题.md': {
       routes:
         | '/posts/无题'
-      views:
-        | never
-    }
-    'pages/posts/番剧列表.md': {
-      routes:
-        | '/posts/番剧列表'
       views:
         | never
     }
