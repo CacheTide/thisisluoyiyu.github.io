@@ -15,6 +15,7 @@ declare module 'vue' {
     README: typeof import('./../components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SafeYunLinks: typeof import('./../components/SafeYunLinks.vue')['default']
     ShadowRoot: typeof import('./../node_modules/.pnpm/valaxy@0.28.4_@babel+parser@7.29.2_@nuxt+kit@3.21.2_magicast@0.5.2__@types+markdown-it@14.1.2_65d56ejvyxezmdt5p4q552bgje/node_modules/valaxy/client/components/internals/ShadowRoot.vue')['default']
     TwikooClient: typeof import('./../node_modules/.pnpm/valaxy-addon-twikoo@0.0.3_valaxy@0.28.4_@babel+parser@7.29.2_@nuxt+kit@3.21.2_magicast@0.5.2__gfq4uxd4cocdtrmvykdbke57ge/node_modules/valaxy-addon-twikoo/components/TwikooClient.vue')['default']
     ValaxyAddons: typeof import('./../node_modules/.pnpm/valaxy@0.28.4_@babel+parser@7.29.2_@nuxt+kit@3.21.2_magicast@0.5.2__@types+markdown-it@14.1.2_65d56ejvyxezmdt5p4q552bgje/node_modules/valaxy/client/components/ValaxyAddons.vue')['default']

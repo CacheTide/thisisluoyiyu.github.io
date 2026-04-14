@@ -104,14 +104,5 @@ links:
 random: true
 ---
 
-<script setup>
-import { onMounted, ref } from 'vue'
-const isMounted = ref(false)
-onMounted(() => {
-  isMounted.value = true
-})
-</script>
-
-<YunLinks v-if="isMounted" key="client-links" :links="frontmatter.links" :random="frontmatter.random" />
-<YunLinks v-else key="server-links" :links="frontmatter.links" :random="false" />
+<SafeYunLinks :links="frontmatter.links" :random="frontmatter.random" />
 
