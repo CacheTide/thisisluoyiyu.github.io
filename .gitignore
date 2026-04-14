@@ -1,32 +1,44 @@
 # valaxy
-
 valaxy-fuse-list.json
+public/valaxy-fuse-list.json
+
+# valaxy rss (generated)
+public/feed.xml
+public/atom.xml
+public/feed.json
 
 # vite-ssg
-
 .vite-ssg-dist
 .vite-ssg-temp
 
-temp/
-
-.DS_Store
-*.local
+# builds
 dist
 dist-ssr
+
+# deps
 node_modules
-.idea/
+
+# caches / temp
+temp/
+.vite/
+.cache/
+.pnpm-store/
+
+# logs
 *.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-components.d.ts
+# local env / secrets
+.env
+.env.*
+*.local
 
-# valaxy fuse
-public/valaxy-fuse-list.json
+# OS junk
+.DS_Store
+Thumbs.db
 
-# valaxy rss
-public/feed.xml
-
-# valaxy rss
-public/atom.xml
-
-# valaxy rss
-public/feed.json
+# IDE
+.idea/
