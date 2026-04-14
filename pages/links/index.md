@@ -104,9 +104,14 @@ links:
 random: true
 ---
 
-<div>
-<ClientOnly>
-  <YunLinks :links="frontmatter.links" :random="frontmatter.random" />
-</ClientOnly>
-</div>
+<script setup>
+import { onMounted, ref } from 'vue'
+const isMounted = ref(false)
+onMounted(() => {
+  isMounted.value = true
+})
+</script>
+
+<YunLinks v-if="isMounted" :links="frontmatter.links" :random="frontmatter.random" />
+<YunLinks v-else :links="frontmatter.links" :random="false" />
 
