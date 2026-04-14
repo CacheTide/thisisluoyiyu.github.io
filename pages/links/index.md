@@ -18,14 +18,14 @@ links:
     email: 
     color: "#FFA500"
   - url: https://snowmiku-home.top/
-    avatar: http://snowmiku-home.top/images/icon2.jpg
+    avatar: https://snowmiku-home.top/images/icon2.jpg
     name: 雪葱
     blog: 葱酱的幻想乡
     desc: nya nya的可爱葱酱
     email: 
     color: "#39C5BB"
   - url: https://tenchsu.com/
-    avatar: http://tenchsu.com/wp-content/uploads/2025/06/Image_1749552664954.jpg
+    avatar: https://tenchsu.com/wp-content/uploads/2025/06/Image_1749552664954.jpg
     name: tenchsu
     blog: tenchsuのblog
     desc: 
@@ -66,8 +66,8 @@ links:
     desc: 越是拼命往前伸手，渴望之物越是渐行渐远
     email: 
     color: "#00f9bb"
-  - url: http://misakae.live/
-    avatar: http://misakae.live/head.jpg
+  - url: https://misakae.live/
+    avatar: https://misakae.live/head.jpg
     name: MisakaE
     blog: MisakaE
     desc: 天明明是这么的蓝 前途却是一片黑暗
@@ -112,6 +112,8 @@ onMounted(() => {
 })
 </script>
 
-<YunLinks v-if="isMounted" :links="frontmatter.links" :random="frontmatter.random" />
-<YunLinks v-else :links="frontmatter.links" :random="false" />
+<div v-if="!isMounted" style="min-height: 300px; display: flex; justify-content: center; align-items: center;">
+  <span style="color: gray;">加载中...</span>
+</div>
+<YunLinks v-else :links="frontmatter.links" :random="frontmatter.random" />
 
