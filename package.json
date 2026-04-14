@@ -37,6 +37,9 @@
     "vue-tsc": "^3.2.6"
   },
   "pnpm": {
+    "overrides": {
+      "jsdom": "25.0.1"
+    },
     "onlyBuiltDependencies": [
       "@parcel/watcher",
       "esbuild",
