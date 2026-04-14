@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const props = defineProps({
   links: {
@@ -9,29 +9,37 @@ const props = defineProps({
   random: Boolean
 })
 
-const data = ref([])
+const isClient = ref(false)
 
 onMounted(() => {
-  if (props.links && props.links.length) {
-    if (props.random) {
-      data.value = [...props.links].sort(() => Math.random() - 0.5)
-    } else {
-      data.value = [...props.links]
-    }
-  }
+  isClient.value = true
 })
 
-watch(() => props.links, (newVal) => {
-  if (newVal && newVal.length && data.value.length === 0) {
-    if (props.random) {
-      data.value = [...newVal].sort(() => Math.random() - 0.5)
-    } else {
-      data.value = [...newVal]
-    }
+// Compute the links to display, reactive to props changes.
+// If random is true, we sort it only after client mount to prevent SSR mismatch.
+const displayLinks = computed(() => {
+  const currentLinks = props.links || []
+  if (currentLinks.length === 0) {
+    return []
   }
+
+  // Perform random sort on the client to avoid SSR mismatch
+  if (props.random && isClient.value) {
+    return [...currentLinks].sort(() => Math.random() - 0.5)
+  }
+  
+  return currentLinks
+})
+
+// Forces YunLinks to recreate. Valaxy's internal YunLinks does not have a watcher
+// on its links prop. Without changing the key, if frontmatter is delayed on GitHub Pages,
+// YunLinks will render blank when the page hydrates and never update. 
+const componentKey = computed(() => {
+  // Update key when data finally arrives (length > 0) AND when client mounts to randomize
+  return `${isClient.value}-${displayLinks.value.length}`
 })
 </script>
 
 <template>
-  <YunLinks :links="data.length ? data : props.links" :random="false" />
+  <YunLinks :key="componentKey" :links="displayLinks" :random="false" />
 </template>
