@@ -66,4 +66,9 @@ export default defineValaxyConfig<UserThemeConfig>({
   },
 
   unocss: { safelist },
+  vite: {
+    ssr: {
+      noExternal: ['gsap']
+    }
+  }
 })
