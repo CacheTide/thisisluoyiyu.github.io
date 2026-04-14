@@ -9,7 +9,7 @@ links:
     blog: 创新者老王的博客
     desc: 超级厉害的师傅！
     email: cxz.lwnb@gmail.com
-    color: "#6058d9"
+    color: "#FFC0CB"
   - url: https://orangestd.cn
     avatar: https://orangestd.cn/images/avatar.png
     name: 橙子
@@ -44,7 +44,7 @@ links:
     blog: Hikaru Lab
     desc: 即使是人造的记忆，也有它存在的价值
     email: 
-    color: "#FFB6C1"
+    color: "#DB7093"
   - url: https://starneko.com
     avatar: https://starneko.com/img/Milk.jpg
     name: 牛奶猫
@@ -94,6 +94,13 @@ links:
     desc: 
     email:
     color: "#FFFACD"
+  - url: https://ziantt.top/
+    avatar: https://ziantt.top/_image?href=%2F_astro%2Favatar.rremnUwR.jpg&w=640&h=640&f=webp
+    name: Ziantt
+    blog: Zianttのblog
+    desc: 
+    email:
+    color: "#8A2BE2"
 random: true
 ---
 
