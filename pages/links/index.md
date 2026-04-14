@@ -104,5 +104,7 @@ links:
 random: true
 ---
 
-<YunLinks :links="frontmatter.links" :random="frontmatter.random" />
+<ClientOnly>
+  <YunLinks :links="frontmatter.links" :random="frontmatter.random" />
+</ClientOnly>
 
