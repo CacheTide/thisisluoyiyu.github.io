@@ -2,14 +2,15 @@
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "preserve",
-    "lib": ["DOM", "ESNext"],
-    "baseUrl": ".",
+    "lib": ["DOM", "ESNext", "DOM.Iterable"],
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "paths": {
       "~/*": ["./*"]
     },
     "resolveJsonModule": true,
+    "types": ["vite/client", "valaxy/client"],
+    "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
     "noUnusedLocals": true,

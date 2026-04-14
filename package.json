@@ -5,36 +5,43 @@
   "private": true,
   "scripts": {
     "build": "npm run build:ssg",
-    "build:spa": "cross-env NODE_OPTIONS=\"--no-warnings\" valaxy build",
-    "build:ssg": "cross-env NODE_OPTIONS=\"--no-warnings\" valaxy build --ssg",
-    "dev": "cross-env NODE_OPTIONS=\"--no-warnings\" valaxy",
-    "rss": "cross-env NODE_OPTIONS=\"--no-warnings\" valaxy rss",
-    "serve": "cross-env NODE_OPTIONS=\"--no-warnings\" vite preview"
+    "build:spa": "valaxy build",
+    "build:ssg": "valaxy build --ssg",
+    "dev": "valaxy",
+    "rss": "valaxy rss",
+    "serve": "vite preview"
   },
   "dependencies": {
-    "valaxy": "0.28.4",
-    "valaxy-theme-yun": "0.28.4",
-    "vue": "^3.5.32"
+    "@vueuse/sound": "^2.1.3"
   },
   "devDependencies": {
-    "@unocss/reset": "^0.61.0",
-    "@valaxyjs/utils": "0.28.4",
+    "@antfu/eslint-config": "^7.7.3",
+    "@types/md5": "^2.3.6",
+    "@yunyoujun/sponsors": "^0.0.4",
     "cross-env": "^10.1.0",
-    "typescript": "^5.8.3",
+    "eslint": "^10.1.0",
+    "lint-staged": "^16.4.0",
+    "md5": "^2.3.0",
+    "simple-git-hooks": "^2.13.1",
+    "typescript": "^5.9.3",
+    "valaxy": "^0.27.0",
     "valaxy-addon-algolia": "^0.2.1",
+    "valaxy-addon-components": "^0.1.0",
+    "valaxy-addon-waline": "^0.2.1",
     "valaxy-addon-artalk": "^0.1.3",
     "valaxy-addon-bangumi": "^0.4.0",
     "valaxy-addon-twikoo": "^0.0.3",
-    "valaxy-addon-waline": "^0.2.1",
-    "vite": "^6.0.0"
+    "valaxy-theme-yun": "^0.27.0",
+    "vite-plugin-remote-assets": "^2.1.0",
+    "vue-gtag-next": "^1.14.0",
+    "vue-tsc": "^3.2.6"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": [
-      "vue-demi"
-    ],
     "onlyBuiltDependencies": [
       "@parcel/watcher",
-      "esbuild"
+      "esbuild",
+      "simple-git-hooks",
+      "vue-demi"
     ]
   }
 }
