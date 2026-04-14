@@ -112,8 +112,6 @@ onMounted(() => {
 })
 </script>
 
-<div v-if="!isMounted" style="min-height: 300px; display: flex; justify-content: center; align-items: center;">
-  <span style="color: gray;">加载中...</span>
-</div>
-<YunLinks v-else :links="frontmatter.links" :random="frontmatter.random" />
+<YunLinks v-if="isMounted" key="client-links" :links="frontmatter.links" :random="frontmatter.random" />
+<YunLinks v-else key="server-links" :links="frontmatter.links" :random="false" />
 
