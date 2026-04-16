@@ -16,7 +16,7 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 	gap: var(--post-grid-gap);
-	align-items: stretch;
+	align-items: start;
 }
 
 /* 卡片本体（覆盖常见选择器；根据主题类名自动命中） */

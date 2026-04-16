@@ -31,7 +31,16 @@ export default defineValaxyConfig<UserThemeConfig>({
     banner: {
       enable: true,
       title: '云边的小旅店',
+      cloud: {
+        enable: true,
+      },
     },
+
+    nav: [
+      { text: 'menu.posts', link: '/posts/', icon: 'i-ri-article-line' },
+      { text: '友情链接', link: '/links/', icon: 'i-ri-link' },
+      { text: '追番列表', link: '/bangumi/', icon: 'i-ri-tv-line' },
+    ],
 	
     bg_image: {
       enable: true,
