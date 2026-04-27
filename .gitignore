@@ -34,6 +34,7 @@ yarn-error.log*
 # local env / secrets
 .env
 .env.*
+!.env.example
 *.local
 
 # OS junk

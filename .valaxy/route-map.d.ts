@@ -83,6 +83,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/food-map/': RouteRecordInfo<
+      '/food-map/',
+      '/food-map',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/links/': RouteRecordInfo<
       '/links/',
       '/links',
@@ -184,6 +191,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/无题': RouteRecordInfo<
       '/posts/无题',
       '/posts/%E6%97%A0%E9%A2%98',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/签签万万': RouteRecordInfo<
+      '/posts/签签万万',
+      '/posts/%E7%AD%BE%E7%AD%BE%E4%B8%87%E4%B8%87',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -361,6 +375,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/food-map/index.md': {
+      routes:
+        | '/food-map/'
+      views:
+        | never
+    }
     'pages/links/index.md': {
       routes:
         | '/links/'
@@ -448,6 +468,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/无题.md': {
       routes:
         | '/posts/无题'
+      views:
+        | never
+    }
+    'pages/posts/签签万万.md': {
+      routes:
+        | '/posts/签签万万'
       views:
         | never
     }

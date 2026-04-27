@@ -5,6 +5,7 @@ import { addonBangumi } from 'valaxy-addon-bangumi'
 // add icons what you will need
 const safelist = [
   'i-ri-home-line',
+  'i-ri-map-pin-line',
 ]
 
 /**
@@ -40,6 +41,7 @@ export default defineValaxyConfig<UserThemeConfig>({
       { text: 'menu.posts', link: '/posts/', icon: 'i-ri-article-line' },
       { text: '友情链接', link: '/links/', icon: 'i-ri-link' },
       { text: '追番列表', link: '/bangumi/', icon: 'i-ri-tv-line' },
+      { text: '美食地图', link: '/food-map/', icon: 'i-ri-map-pin-line' },
     ],
 	
     bg_image: {
@@ -61,6 +63,12 @@ export default defineValaxyConfig<UserThemeConfig>({
         url: '/bangumi/',
         icon: 'i-ri-tv-line',
         color: '#f09199',
+      },
+      {
+        name: '美食地图',
+        url: '/food-map/',
+        icon: 'i-ri-map-pin-line',
+        color: '#f97316',
       },
     ],
 

@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppLink: typeof import('./../node_modules/.pnpm/valaxy@0.27.0_@babel+parser@7.29.2_@nuxt+kit@3.21.2_@types+markdown-it@14.1.2_@types+node@25._rslroq7kziv7z3p2bqsirmkujm/node_modules/valaxy/client/components/AppLink.vue')['default']
     ArtalkClient: typeof import('./../node_modules/.pnpm/valaxy-addon-artalk@0.1.3_marked@15.0.12_typescript@5.9.3_valaxy@0.27.0_@babel+parser@7.29.2__6hssid4id25ubeohx2y2udlq3a/node_modules/valaxy-addon-artalk/components/ArtalkClient.vue')['default']
+    FoodMap: typeof import('./../components/FoodMap.vue')['default']
     LineBurstEffects: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/animation/LineBurstEffects.vue')['default']
     PrologueSocialIcon: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/prologue/PrologueSocialIcon.vue')['default']
     PrologueSocialLinks: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/prologue/PrologueSocialLinks.vue')['default']
@@ -106,7 +107,7 @@ declare module 'vue' {
     YunPostCollapse: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/YunPostCollapse.vue')['default']
     YunPostCollapseItem: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/YunPostCollapseItem.vue')['default']
     YunPostDateMeta: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/YunPostDateMeta.vue')['default']
-    YunPostList: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/YunPostList.vue')['default']
+    YunPostList: typeof import('./../components/YunPostList.vue')['default']
     YunPostMeta: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/YunPostMeta.vue')['default']
     YunPostNav: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/YunPostNav.vue')['default']
     YunPostsInfo: typeof import('./../node_modules/.pnpm/valaxy-theme-yun@0.27.0_vue@3.5.32_typescript@5.9.3_/node_modules/valaxy-theme-yun/components/YunPostsInfo.vue')['default']
