@@ -160,6 +160,20 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/山城饭局市井江湖菜': RouteRecordInfo<
+      '/posts/山城饭局市井江湖菜',
+      '/posts/%E5%B1%B1%E5%9F%8E%E9%A5%AD%E5%B1%80%E5%B8%82%E4%BA%95%E6%B1%9F%E6%B9%96%E8%8F%9C',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/常青井口毛肚火锅': RouteRecordInfo<
+      '/posts/常青井口毛肚火锅',
+      '/posts/%E5%B8%B8%E9%9D%92%E4%BA%95%E5%8F%A3%E6%AF%9B%E8%82%9A%E7%81%AB%E9%94%85',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/幻梦，死于现实，亦或是软弱': RouteRecordInfo<
       '/posts/幻梦，死于现实，亦或是软弱',
       '/posts/%E5%B9%BB%E6%A2%A6%EF%BC%8C%E6%AD%BB%E4%BA%8E%E7%8E%B0%E5%AE%9E%EF%BC%8C%E4%BA%A6%E6%88%96%E6%98%AF%E8%BD%AF%E5%BC%B1',
@@ -198,6 +212,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/签签万万': RouteRecordInfo<
       '/posts/签签万万',
       '/posts/%E7%AD%BE%E7%AD%BE%E4%B8%87%E4%B8%87',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/薛记正宗哩脊肉': RouteRecordInfo<
+      '/posts/薛记正宗哩脊肉',
+      '/posts/%E8%96%9B%E8%AE%B0%E6%AD%A3%E5%AE%97%E5%93%A9%E8%84%8A%E8%82%89',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -441,6 +462,18 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/山城饭局市井江湖菜.md': {
+      routes:
+        | '/posts/山城饭局市井江湖菜'
+      views:
+        | never
+    }
+    'pages/posts/常青井口毛肚火锅.md': {
+      routes:
+        | '/posts/常青井口毛肚火锅'
+      views:
+        | never
+    }
     'pages/posts/幻梦，死于现实，亦或是软弱.md': {
       routes:
         | '/posts/幻梦，死于现实，亦或是软弱'
@@ -474,6 +507,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/签签万万.md': {
       routes:
         | '/posts/签签万万'
+      views:
+        | never
+    }
+    'pages/posts/薛记正宗哩脊肉.md': {
+      routes:
+        | '/posts/薛记正宗哩脊肉'
       views:
         | never
     }

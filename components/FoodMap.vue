@@ -16,14 +16,17 @@ interface AMapMap {
   add: (overlays: AMapMarker[] | AMapMarker) => void
   remove: (overlays: AMapMarker[] | AMapMarker) => void
   addControl: (control: unknown) => void
-  setCenter: (center: [number, number]) => void
+  getCenter: () => { lng: number, lat: number }
+  getZoom: () => number
+  resize?: () => void
+  setCenter: (center: [number, number], immediately?: boolean, duration?: number) => void
   setFitView: (
     overlays?: AMapMarker[],
     immediately?: boolean,
     avoid?: [number, number, number, number],
     maxZoom?: number,
   ) => void
-  setZoomAndCenter: (zoom: number, center: [number, number]) => void
+  setZoomAndCenter: (zoom: number, center: [number, number], immediately?: boolean, duration?: number) => void
   destroy: () => void
 }
 
@@ -40,8 +43,15 @@ interface AMapInfoWindow {
 const CHINA_CENTER: [number, number] = [104.195397, 35.86166]
 const AMAP_CALLBACK_NAME = '__foodMapAmapLoaded'
 const AMAP_PLUGINS = ['AMap.Scale', 'AMap.ToolBar']
+const FOCUS_ZOOM = 16
+const SINGLE_SPOT_ZOOM = 15
+const FIT_VIEW_PADDING: [number, number, number, number] = [48, 48, 48, 48]
+const FOCUS_ANIMATION_DURATION = 560
+const RECENTER_AFTER_OPEN_DELAY = 120
 
 let amapLoadPromise: Promise<AMapNamespace> | null = null
+let moveAnimationFrame: number | null = null
+let recenterTimer: number | null = null
 
 const amapKey = getEnvString(import.meta.env.VITE_AMAP_KEY)
 const amapSecurityJsCode = getEnvString(import.meta.env.VITE_AMAP_SECURITY_JS_CODE)
@@ -103,6 +113,7 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
+  clearPendingRecenter()
   infoWindowRef.value?.close()
   if (mapRef.value && markerRefs.value.length)
     mapRef.value.remove(markerRefs.value)
@@ -163,6 +174,7 @@ async function initMap() {
       mapRef.value.addControl(new AMap.ToolBar({ position: 'RB' }))
 
     infoWindowRef.value = new AMap.InfoWindow({
+      autoMove: false,
       closeWhenClickMap: true,
       isCustom: false,
     })
@@ -204,6 +216,12 @@ function renderMarkers() {
 
   mapRef.value.add(markers)
   markerRefs.value = markers
+
+  if (activeSpot.value && filteredSpots.value.some(spot => spot.id === activeSpot.value?.id)) {
+    focusMapOnSpot(activeSpot.value, true, false)
+    return
+  }
+
   fitMapToMarkers()
 }
 
@@ -276,27 +294,129 @@ function fitMapToMarkers() {
 
   if (filteredSpots.value.length === 1) {
     const spot = filteredSpots.value[0]
-    mapRef.value.setZoomAndCenter(15, [spot.lng, spot.lat])
+    mapRef.value.resize?.()
+    mapRef.value.setZoomAndCenter(SINGLE_SPOT_ZOOM, [spot.lng, spot.lat], true)
     return
   }
 
-  mapRef.value.setFitView(markerRefs.value, false, [48, 48, 48, 48], 15)
+  mapRef.value.resize?.()
+  mapRef.value.setFitView(markerRefs.value, true, FIT_VIEW_PADDING, SINGLE_SPOT_ZOOM)
 }
 
 function focusSpot(spot: FoodSpot, shouldZoom = true) {
   activeSpot.value = spot
+  focusMapOnSpot(spot, shouldZoom, true)
+}
 
-  if (!mapRef.value || !infoWindowRef.value)
+function focusMapOnSpot(spot: FoodSpot, shouldZoom = true, shouldAnimate = true) {
+  const map = mapRef.value
+  const infoWindow = infoWindowRef.value
+
+  if (!map || !infoWindow)
     return
 
   const position: [number, number] = [spot.lng, spot.lat]
-  if (shouldZoom)
-    mapRef.value.setZoomAndCenter(16, position)
-  else
-    mapRef.value.setCenter(position)
+  clearPendingRecenter()
+  map.resize?.()
 
-  infoWindowRef.value.setContent(getInfoWindowContent(spot))
-  infoWindowRef.value.open(mapRef.value, position)
+  if (shouldAnimate)
+    animateMapToPosition(position, shouldZoom)
+  else
+    moveMapToPosition(position, shouldZoom)
+
+  infoWindow.close()
+  infoWindow.setContent(getInfoWindowContent(spot))
+  infoWindow.open(map, position)
+  scheduleRecenter(position, shouldZoom, shouldAnimate)
+}
+
+function moveMapToPosition(
+  position: [number, number],
+  shouldZoom: boolean,
+  immediately = true,
+) {
+  const map = mapRef.value
+
+  if (!map)
+    return
+
+  if (shouldZoom)
+    map.setZoomAndCenter(FOCUS_ZOOM, position, immediately)
+  else
+    map.setCenter(position, immediately)
+}
+
+function animateMapToPosition(position: [number, number], shouldZoom: boolean) {
+  const map = mapRef.value
+
+  if (!map)
+    return
+
+  const center = map.getCenter()
+  const start = {
+    lng: center.lng,
+    lat: center.lat,
+    zoom: map.getZoom(),
+  }
+  const targetZoom = shouldZoom ? FOCUS_ZOOM : start.zoom
+  const startedAt = performance.now()
+
+  const tick = (timestamp: number) => {
+    const progress = Math.min((timestamp - startedAt) / FOCUS_ANIMATION_DURATION, 1)
+    const easedProgress = easeOutCubic(progress)
+    const nextCenter: [number, number] = [
+      interpolate(start.lng, position[0], easedProgress),
+      interpolate(start.lat, position[1], easedProgress),
+    ]
+    const nextZoom = interpolate(start.zoom, targetZoom, easedProgress)
+
+    if (shouldZoom)
+      map.setZoomAndCenter(nextZoom, nextCenter, true)
+    else
+      map.setCenter(nextCenter, true)
+
+    if (progress < 1) {
+      moveAnimationFrame = window.requestAnimationFrame(tick)
+      return
+    }
+
+    moveAnimationFrame = null
+    moveMapToPosition(position, shouldZoom)
+  }
+
+  moveAnimationFrame = window.requestAnimationFrame(tick)
+}
+
+function scheduleRecenter(position: [number, number], shouldZoom: boolean, shouldAnimate: boolean) {
+  const delay = shouldAnimate
+    ? FOCUS_ANIMATION_DURATION + RECENTER_AFTER_OPEN_DELAY
+    : RECENTER_AFTER_OPEN_DELAY
+
+  recenterTimer = window.setTimeout(() => {
+    recenterTimer = null
+    mapRef.value?.resize?.()
+    moveMapToPosition(position, shouldZoom)
+  }, delay)
+}
+
+function clearPendingRecenter() {
+  if (moveAnimationFrame !== null) {
+    window.cancelAnimationFrame(moveAnimationFrame)
+    moveAnimationFrame = null
+  }
+
+  if (recenterTimer !== null) {
+    window.clearTimeout(recenterTimer)
+    recenterTimer = null
+  }
+}
+
+function interpolate(start: number, end: number, progress: number) {
+  return start + (end - start) * progress
+}
+
+function easeOutCubic(progress: number) {
+  return 1 - (1 - progress) ** 3
 }
 
 function resetFilters() {
