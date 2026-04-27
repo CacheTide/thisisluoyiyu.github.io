@@ -702,6 +702,7 @@ function resolveHref(value: string) {
 .food-map__body,
 .food-map__active-card {
   margin-bottom: 0 !important;
+  margin-inline: 0 !important;
 }
 
 .food-map__eyebrow {
@@ -719,6 +720,7 @@ function resolveHref(value: string) {
   gap: 0.75rem;
   overflow-x: auto;
   padding: 0.9rem 1rem;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklab, var(--va-c-primary, #f97316) 35%, transparent) transparent;
 }
@@ -738,6 +740,7 @@ function resolveHref(value: string) {
   padding: 0.65rem 0.75rem;
   background: color-mix(in oklab, var(--va-c-bg, #fff) 82%, transparent);
   color: var(--va-c-text-1, #0f172a);
+  font-size: 1rem;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -776,6 +779,7 @@ function resolveHref(value: string) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 2.75rem;
   border: 0;
   border-radius: 999px;
   padding: 0.65rem 1rem;
@@ -808,6 +812,7 @@ function resolveHref(value: string) {
   border-right: 1px solid var(--food-map-border);
   padding: 1rem;
   background: color-mix(in oklab, var(--va-c-bg-soft, rgba(148, 163, 184, 0.12)) 28%, transparent);
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklab, var(--va-c-primary, #f97316) 35%, transparent) transparent;
 }
@@ -1105,7 +1110,8 @@ function resolveHref(value: string) {
 
 @media (max-width: 860px) {
   .food-map {
-    gap: 0.9rem;
+    gap: 0.85rem;
+    width: min(100%, 44rem);
   }
 
   .food-map__body {
@@ -1119,20 +1125,22 @@ function resolveHref(value: string) {
     flex-direction: row;
     max-height: none;
     overflow-x: auto;
+    overflow-y: hidden;
     border-top: 1px solid var(--food-map-border);
     border-right: 0;
     padding: 0.85rem;
-    scroll-snap-type: x proximity;
+    scroll-padding-inline: 0.85rem;
+    scroll-snap-type: x mandatory;
   }
 
   .food-map__list-item {
-    flex: 0 0 min(76vw, 18rem);
+    flex: 0 0 min(78vw, 19rem);
     scroll-snap-align: start;
   }
 
   .food-map__map-card,
   .food-map__map {
-    height: min(68vh, 560px);
+    height: clamp(380px, 62svh, 560px);
     min-height: 420px;
   }
 
@@ -1146,29 +1154,54 @@ function resolveHref(value: string) {
 }
 
 @media (max-width: 560px) {
+  :global(.yun-card:has(.food-map)) {
+    margin-inline: 0 !important;
+  }
+
+  :global(.yun-card:has(.food-map) > div:last-child) {
+    padding-inline: 0 !important;
+  }
+
   .food-map {
-    width: calc(100% + 0.5rem);
-    margin-inline: -0.25rem;
+    width: 100%;
+    margin-inline: 0;
     --food-map-inner-radius: 0.85rem;
   }
 
   .food-map__filters {
+    align-items: stretch;
     gap: 0.6rem;
-    padding: 0.8rem;
+    padding: 0.75rem;
+    scroll-padding-inline: 0.75rem;
+    scroll-snap-type: x proximity;
   }
 
   .food-map__filters label {
-    flex-basis: 9.5rem;
+    flex: 0 0 min(42vw, 10rem);
+    scroll-snap-align: start;
+  }
+
+  .food-map__filters select {
+    min-height: 2.75rem;
+    padding: 0.6rem 0.7rem;
   }
 
   .food-map__stats {
+    min-height: 2.75rem;
     margin-left: 0;
+    padding: 0.5rem 0.75rem;
+    scroll-snap-align: start;
+  }
+
+  .food-map__reset {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 
   .food-map__map-card,
   .food-map__map {
-    height: 60vh;
-    min-height: 360px;
+    height: clamp(340px, 58svh, 480px);
+    min-height: 340px;
   }
 
   .food-map__map-hint {
@@ -1181,21 +1214,68 @@ function resolveHref(value: string) {
   }
 
   .food-map__active-card {
-    padding: 1rem;
+    gap: 0.8rem;
+    padding: 0.95rem;
   }
 
   .food-map__active-card dl {
     grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .food-map__active-card h2 {
+    font-size: 1.18rem;
+    line-height: 1.35;
+  }
+
+  .food-map__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .food-map__action-link {
+    width: 100%;
   }
 
   :global(.food-map-info-window) {
-    width: min(84vw, 20rem);
-    padding: 0.9rem;
+    width: min(calc(100vw - 2rem), 20rem);
+    max-height: min(70svh, 30rem);
+    overflow-y: auto;
+    padding: 0.9rem 0.95rem;
   }
 
   :global(.food-map-info-window dl div) {
-    grid-template-columns: 3.1rem minmax(0, 1fr);
+    grid-template-columns: 3.2rem minmax(0, 1fr);
     column-gap: 0.6rem;
+  }
+
+  :global(.food-map-info-window__link) {
+    min-height: 2.5rem;
+    align-items: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .food-map__filters label {
+    flex-basis: 8.8rem;
+  }
+
+  .food-map__list-item {
+    flex-basis: min(84vw, 18rem);
+  }
+
+  :global(.food-map-info-window) {
+    width: calc(100vw - 1.5rem);
+  }
+}
+
+@media (hover: none) {
+  .food-map__filters:hover,
+  .food-map__body:hover,
+  .food-map__active-card:hover,
+  .food-map__list-item:hover {
+    transform: none !important;
   }
 }
 </style>
