@@ -333,7 +333,7 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'node_modules/.pnpm/valaxy@0.27.0_@babel+parser@7.29.2_@nuxt+kit@3.21.2_@types+markdown-it@14.1.2_@types+node@25._rslroq7kziv7z3p2bqsirmkujm/node_modules/valaxy/client/pages/[...path].vue': {
+    'node_modules/.pnpm/valaxy@0.27.0_@babel+parser@7.29.2_@nuxt+kit@3.21.2_@types+markdown-it@14.1.2_@types+no_1e16fa9c1b9aa620f3ddbd66da44eb67/node_modules/valaxy/client/pages/[...path].vue': {
       routes:
         | '/[...path]'
       views:

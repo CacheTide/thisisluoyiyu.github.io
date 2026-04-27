@@ -687,11 +687,13 @@ function resolveHref(value: string) {
   --food-map-border: rgba(0, 0, 0, 0.03);
   --food-map-inner-radius: var(--radius-detail-inner, 16px);
   --food-map-blur: blur(16px) saturate(140%);
+  --food-map-top-offset: clamp(4rem, 7svh, var(--yun-margin-top, 68px));
 
   display: grid;
   gap: 1.1rem;
   width: min(1120px, 100%);
   margin: 0 auto;
+  padding-top: var(--food-map-top-offset);
 }
 
 :global(html.dark) .food-map {
