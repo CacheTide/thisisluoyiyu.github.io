@@ -6,4 +6,4 @@ comment: false
 icon: i-ri-map-pin-line
 ---
 
-<FoodMap />
+<ValaxyFoodMap />

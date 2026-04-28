@@ -237,6 +237,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/新概念双椒兔': RouteRecordInfo<
+      '/posts/新概念双椒兔',
+      '/posts/%E6%96%B0%E6%A6%82%E5%BF%B5%E5%8F%8C%E6%A4%92%E5%85%94',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/无言': RouteRecordInfo<
       '/posts/无言',
       '/posts/%E6%97%A0%E8%A8%80',
@@ -452,7 +459,7 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'node_modules/.pnpm/valaxy@0.27.0_@babel+parser@7.29.2_@nuxt+kit@3.21.2_@types+markdown-it@14.1.2_@types+node@25._rslroq7kziv7z3p2bqsirmkujm/node_modules/valaxy/client/pages/[...path].vue': {
+    'node_modules/.pnpm/valaxy@0.27.0_@babel+parser@7.29.2_@nuxt+kit@3.21.2_@types+markdown-it@14.1.2_@types+no_1e16fa9c1b9aa620f3ddbd66da44eb67/node_modules/valaxy/client/pages/[...path].vue': {
       routes:
         | '/[...path]'
       views:
@@ -623,6 +630,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/意外的多了很多感慨.md': {
       routes:
         | '/posts/意外的多了很多感慨'
+      views:
+        | never
+    }
+    'pages/posts/新概念双椒兔.md': {
+      routes:
+        | '/posts/新概念双椒兔'
       views:
         | never
     }

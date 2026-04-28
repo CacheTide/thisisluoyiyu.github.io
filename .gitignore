@@ -6,6 +6,7 @@ public/valaxy-fuse-list.json
 public/feed.xml
 public/atom.xml
 public/feed.json
+public/food-map/index.json
 
 # vite-ssg
 .vite-ssg-dist

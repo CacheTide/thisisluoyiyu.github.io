@@ -1,6 +1,7 @@
 import type { UserThemeConfig } from 'valaxy-theme-yun'
 import { defineValaxyConfig } from 'valaxy'
-import { addonBangumi } from 'valaxy-addon-bangumi' 
+import { addonBangumi } from 'valaxy-addon-bangumi'
+import { addonFoodMap } from 'valaxy-addon-food-map'
 
 // add icons what you will need
 const safelist = [
@@ -22,8 +23,11 @@ export default defineValaxyConfig<UserThemeConfig>({
     // 👇 2. 在这里追加 bangumi 插件配置
     addonBangumi({
       api: 'https://cachetide--eb2baf80366c11f1869342b51c65c3df.web.val.run',
-      bgmUid: '995914', 
+      bgmUid: '995914',
       bilibiliEnabled: false,
+    }),
+    addonFoodMap({
+      jsonPath: '/food-map/index.json',
     }),
   ],
 
@@ -41,9 +45,9 @@ export default defineValaxyConfig<UserThemeConfig>({
       { text: 'menu.posts', link: '/posts/', icon: 'i-ri-article-line' },
       { text: '友情链接', link: '/links/', icon: 'i-ri-link' },
       { text: '追番列表', link: '/bangumi/', icon: 'i-ri-tv-line' },
-      { text: '美食地图', link: '/food-map/', icon: 'i-ri-map-pin-line' },
+      { text: '美食地图', link: '/food-map', icon: 'i-ri-map-pin-line' },
     ],
-	
+
     bg_image: {
       enable: true,
       url: '/background.jpg',
@@ -66,7 +70,7 @@ export default defineValaxyConfig<UserThemeConfig>({
       },
       {
         name: '美食地图',
-        url: '/food-map/',
+        url: '/food-map',
         icon: 'i-ri-map-pin-line',
         color: '#f97316',
       },

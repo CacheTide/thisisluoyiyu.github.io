@@ -1,6 +1,6 @@
 # 美食地图 FrontMatter 示例
 
-把下面这段 FrontMatter 放到普通探店文章顶部即可。文章依然是普通 Markdown 文章；设置 `hide: index` 后不会出现在首页，但仍能被 `/food-map/` 读取并跳转访问。
+把下面这段 FrontMatter 放到普通探店文章顶部即可。文章依然是普通 Markdown 文章；设置 `hide: index` 后不会出现在首页，但仍能被 `/food-map` 读取并跳转访问。
 
 ```yaml
 ---
@@ -51,6 +51,8 @@ food:
 - `lng` / `lat` 需要填写高德兼容坐标（GCJ-02）。如果坐标来自 WGS84、百度 BD-09 或其他地图体系，请先转换，否则地图点位会偏移。
 - 不要用 `draft: true` 隐藏正式探店文章；草稿不会参与生产构建，也不会出现在美食地图。
 - 前端只使用高德 Web 端 JSAPI Key，不要把高德 Web 服务 API Key 写进前端代码。
+- 构建后会导出本站美食地图 JSON：`/food-map/index.json`。JSON 只包含本站文章里的 local 店铺基础数据，不会包含 `visits`、`visitedAt`、`people` 等探店时间线信息，也不会把聚合进来的外部数据再次导出。
+- 如需聚合其他站点，在 `valaxy.config.ts` 的 `addonFoodMap({ sources: [...] })` 中配置。外部 JSON 的 `source` 会被本地 `sources[]` 覆盖，且外部店铺不会显示探店时间线。
 
 多次探店写法示例：
 
