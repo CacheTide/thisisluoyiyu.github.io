@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Post } from 'valaxy'
-import type { FoodFrontMatter, FoodSpot } from '../types/food-map'
-import { usePageList } from 'valaxy'
+import type { FoodFrontMatter, FoodSpot, FoodVisit, FoodVisitFrontMatter, FoodVisitPerson } from '../types/food-map'
+import { usePageList, useSiteConfig } from 'valaxy'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 
 interface AMapNamespace {
@@ -57,6 +57,7 @@ const amapKey = getEnvString(import.meta.env.VITE_AMAP_KEY)
 const amapSecurityJsCode = getEnvString(import.meta.env.VITE_AMAP_SECURITY_JS_CODE)
 
 const pageList = usePageList()
+const siteConfig = useSiteConfig()
 const selectedCity = ref('')
 const selectedCategory = ref('')
 const loading = ref(false)
@@ -70,9 +71,11 @@ const infoWindowRef = shallowRef<AMapInfoWindow>()
 const markerRefs = shallowRef<AMapMarker[]>([])
 
 const foodSpots = computed<FoodSpot[]>(() => {
-  return pageList.value
+  const spots = pageList.value
     .map(post => createFoodSpot(post))
     .filter((spot): spot is FoodSpot => Boolean(spot))
+
+  return mergeFoodSpots(spots)
     .sort((left, right) => {
       return left.city.localeCompare(right.city, 'zh-CN')
         || left.category.localeCompare(right.category, 'zh-CN')
@@ -442,9 +445,13 @@ function createFoodSpot(post: Post): FoodSpot | null {
   const category = normalizeText(food.category) || '未分类'
   const articlePath = normalizeText(post.path) || normalizeText(post.url) || '#'
   const amapUrl = getAmapUrl(food)
+  const visits = createFoodVisits(food, post, {
+    articlePath,
+    title,
+  })
 
   return {
-    id: `${articlePath}-${lng}-${lat}`,
+    id: getFoodSpotId(food, name, lng, lat),
     address: normalizeText(food.address),
     amapUrl,
     articlePath,
@@ -458,7 +465,112 @@ function createFoodSpot(post: Post): FoodSpot | null {
     recommend: toStringArray(food.recommend),
     showAmapLink: Boolean(amapUrl) && shouldShowAmapLink(food),
     visited: true,
+    visits,
   }
+}
+
+function mergeFoodSpots(spots: FoodSpot[]) {
+  const spotMap = new Map<string, FoodSpot>()
+
+  for (const spot of spots) {
+    const existingSpot = spotMap.get(spot.id)
+
+    if (!existingSpot) {
+      spotMap.set(spot.id, {
+        ...spot,
+        visits: sortFoodVisits(spot.visits),
+      })
+      continue
+    }
+
+    const visits = sortFoodVisits([...existingSpot.visits, ...spot.visits])
+    const latestVisit = visits[0]
+    const recommend = latestVisit?.recommend.length
+      ? latestVisit.recommend
+      : existingSpot.recommend.length
+        ? existingSpot.recommend
+        : spot.recommend
+
+    spotMap.set(spot.id, {
+      ...existingSpot,
+      articlePath: latestVisit?.articlePath || existingSpot.articlePath,
+      price: latestVisit?.price ?? existingSpot.price ?? spot.price,
+      rating: latestVisit?.rating ?? existingSpot.rating ?? spot.rating,
+      recommend,
+      visits,
+    })
+  }
+
+  return Array.from(spotMap.values())
+}
+
+function getFoodSpotId(food: FoodFrontMatter, name: string, lng: number, lat: number) {
+  const explicitId = normalizeText(food.spotId)
+
+  if (explicitId)
+    return explicitId
+
+  return [
+    name,
+    lng.toFixed(6),
+    lat.toFixed(6),
+  ].join('-')
+}
+
+function createFoodVisits(
+  food: FoodFrontMatter,
+  post: Post,
+  context: { articlePath: string, title: string },
+): FoodVisit[] {
+  const rawVisits = getRawFoodVisits(food)
+
+  if (!rawVisits.length || isFalse(food.showTimeline))
+    return []
+
+  return sortFoodVisits(rawVisits.map((visit, index) => createFoodVisit(food, visit, post, context, index)))
+}
+
+function getRawFoodVisits(food: FoodFrontMatter): FoodVisitFrontMatter[] {
+  if (Array.isArray(food.visits))
+    return food.visits.filter((visit): visit is FoodVisitFrontMatter => Boolean(visit && typeof visit === 'object'))
+
+  if (food.visit && typeof food.visit === 'object')
+    return [food.visit]
+
+  return []
+}
+
+function createFoodVisit(
+  food: FoodFrontMatter,
+  visit: FoodVisitFrontMatter,
+  post: Post,
+  context: { articlePath: string, title: string },
+  index: number,
+): FoodVisit {
+  const visitedAt = normalizeDateText(visit.visitedAt ?? visit.date ?? food.visitedAt ?? getPostDate(post))
+  const articlePath = normalizeText(visit.articleUrl) || context.articlePath
+  const title = normalizeText(visit.title) || context.title || '探店记录'
+
+  return {
+    id: `${articlePath}-${visitedAt || 'unknown-date'}-${index}`,
+    articlePath,
+    note: normalizeText(visit.note) || (index === 0 ? normalizeText(food.note) : ''),
+    people: toVisitPeople(visit.people ?? food.people, getDefaultVisitPeople()),
+    price: toOptionalNumber(visit.price ?? food.price),
+    rating: toOptionalNumber(visit.rating ?? food.rating),
+    recommend: toStringArray(visit.recommend ?? food.recommend),
+    title,
+    visitedAt,
+  }
+}
+
+function sortFoodVisits(visits: FoodVisit[]) {
+  return visits.sort((left, right) => getVisitSortTime(right) - getVisitSortTime(left))
+}
+
+function getVisitSortTime(visit: FoodVisit) {
+  const parsed = Date.parse(visit.visitedAt)
+  return Number.isFinite(parsed) ? parsed : 0
 }
 
 function getMapCenter(): [number, number] {
@@ -485,6 +597,7 @@ function getInfoWindowContent(spot: FoodSpot) {
     ['城市', spot.city],
     ['地址', spot.address],
     ['分类', spot.category],
+    ['探店', spot.visits.length ? `${spot.visits.length} 次` : ''],
     ['人均', formatPrice(spot.price)],
     ['评分', formatRating(spot.rating)],
   ].filter((entry): entry is [string, string] => Boolean(entry[1]))
@@ -547,6 +660,93 @@ function toStringArray(value: unknown) {
   if (typeof value === 'string')
     return value.split(/[、,，]/).map(item => item.trim()).filter(Boolean)
   return []
+}
+
+function toVisitPeople(value: unknown, fallback: FoodVisitPerson[] = []): FoodVisitPerson[] {
+  if (Array.isArray(value)) {
+    const people = value
+      .map(person => normalizeVisitPerson(person))
+      .filter((person): person is FoodVisitPerson => Boolean(person))
+
+    return people
+  }
+
+  if (typeof value === 'string') {
+    const people = value
+      .split(/[、,，]/)
+      .map(person => normalizeVisitPerson(person))
+      .filter((person): person is FoodVisitPerson => Boolean(person))
+
+    return people.length ? people : fallback
+  }
+
+  return fallback
+}
+
+function normalizeVisitPerson(value: unknown): FoodVisitPerson | null {
+  if (typeof value === 'string') {
+    const name = value.trim()
+    return name ? { name } : null
+  }
+
+  if (value && typeof value === 'object') {
+    const record = value as Record<string, unknown>
+    const name = normalizeText(record.name)
+    const url = normalizeExternalUrl(record.url) || normalizeExternalUrl(record.link)
+
+    if (!name)
+      return null
+
+    return url ? { name, url } : { name }
+  }
+
+  return null
+}
+
+function getDefaultVisitPeople(): FoodVisitPerson[] {
+  const author = siteConfig.value.author
+  const name = typeof author === 'string'
+    ? normalizeText(author)
+    : normalizeText(author?.name)
+
+  return name ? [{ name }] : []
+}
+
+function getPostDate(post: Post) {
+  const record = post as Record<string, unknown>
+  return record.date ?? record.updated ?? record.updatedAt ?? record.createdAt
+}
+
+function normalizeDateText(value: unknown) {
+  if (typeof value === 'string') {
+    const trimmed = value.trim()
+    const dateOnly = trimmed.match(/^\d{4}-\d{2}-\d{2}/)?.[0]
+
+    if (dateOnly)
+      return dateOnly
+
+    return formatDateText(trimmed)
+  }
+
+  if (value instanceof Date)
+    return formatDateText(value)
+
+  if (typeof value === 'number')
+    return formatDateText(value)
+
+  return ''
+}
+
+function formatDateText(value: string | number | Date) {
+  const date = value instanceof Date ? value : new Date(value)
+
+  if (Number.isNaN(date.getTime()))
+    return ''
+
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
 }
 
 function getAmapUrl(food: FoodFrontMatter) {
@@ -696,6 +896,7 @@ function resolveHref(value: string) {
             <span>{{ spot.city }}</span>
             <span>{{ spot.category }}</span>
             <span v-if="hasNumber(spot.rating)">{{ formatRating(spot.rating) }}</span>
+            <span v-if="spot.visits.length > 1">{{ spot.visits.length }} 次探店</span>
           </span>
           <span v-if="spot.address" class="food-map__list-address">{{ spot.address }}</span>
         </button>
@@ -747,6 +948,59 @@ function resolveHref(value: string) {
           <dd>{{ formatRecommends(activeSpot.recommend) }}</dd>
         </div>
       </dl>
+
+      <section v-if="activeSpot.visits.length" class="food-map__timeline" aria-label="探店时间线">
+        <h3>探店时间线</h3>
+        <ol>
+          <li v-for="visit in activeSpot.visits" :key="visit.id" class="food-map__visit">
+            <time v-if="visit.visitedAt" :datetime="visit.visitedAt">{{ visit.visitedAt }}</time>
+            <span v-else class="food-map__visit-date">未知日期</span>
+
+            <p class="food-map__visit-people">
+              <template v-if="visit.people.length">
+                <template v-for="(person, index) in visit.people" :key="`${visit.id}-${person.name}-${index}`">
+                  <span v-if="index">、</span>
+                  <a
+                    v-if="person.url"
+                    :href="person.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >{{ person.name }}</a>
+                  <span v-else>{{ person.name }}</span>
+                </template>
+                <span> 吃过这家店</span>
+              </template>
+              <span v-else>记录了一次探店</span>
+            </p>
+
+            <p v-if="visit.note" class="food-map__visit-note">
+              {{ visit.note }}
+            </p>
+
+            <div
+              v-if="hasNumber(visit.rating) || hasNumber(visit.price) || visit.recommend.length"
+              class="food-map__visit-meta"
+            >
+              <span v-if="hasNumber(visit.rating)">{{ formatRating(visit.rating) }}</span>
+              <span v-if="hasNumber(visit.price)">{{ formatPrice(visit.price) }}</span>
+              <span v-if="visit.recommend.length">推荐：{{ formatRecommends(visit.recommend) }}</span>
+            </div>
+
+            <a
+              v-if="isExternalLink(visit.articlePath)"
+              class="food-map__visit-link"
+              :href="visit.articlePath"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              查看这次记录
+            </a>
+            <RouterLink v-else class="food-map__visit-link" :to="visit.articlePath">
+              查看这次记录
+            </RouterLink>
+          </li>
+        </ol>
+      </section>
 
       <div class="food-map__actions">
         <a
@@ -1061,6 +1315,96 @@ function resolveHref(value: string) {
   color: var(--va-c-text-1, #0f172a);
   font-weight: 700;
   overflow-wrap: anywhere;
+}
+
+.food-map__timeline {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--food-map-border);
+  padding-top: 0.95rem;
+}
+
+.food-map__timeline h3 {
+  margin: 0 0 0.75rem;
+  color: var(--va-c-text-1, #0f172a);
+  font-size: 1rem;
+}
+
+.food-map__timeline ol {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.food-map__visit {
+  position: relative;
+  display: grid;
+  gap: 0.4rem;
+  border-left: 2px solid color-mix(in oklab, var(--va-c-primary, #f97316) 35%, transparent);
+  padding-left: 0.95rem;
+}
+
+.food-map__visit::before {
+  content: '';
+  position: absolute;
+  top: 0.38rem;
+  left: -0.38rem;
+  width: 0.62rem;
+  height: 0.62rem;
+  border: 2px solid color-mix(in oklab, var(--va-c-primary, #f97316) 70%, transparent);
+  border-radius: 999px;
+  background: var(--va-c-bg, #fff);
+}
+
+.food-map__visit time,
+.food-map__visit-date {
+  color: var(--va-c-primary, #f97316);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.food-map__visit-people,
+.food-map__visit-note {
+  margin: 0;
+  color: var(--va-c-text-1, #0f172a);
+  line-height: 1.6;
+}
+
+.food-map__visit-people a,
+.food-map__visit-link {
+  color: var(--va-c-primary, #f97316);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.food-map__visit-people a:hover,
+.food-map__visit-link:hover {
+  text-decoration: underline;
+}
+
+.food-map__visit-note {
+  color: var(--va-c-text-2, #64748b);
+  font-size: 0.92rem;
+}
+
+.food-map__visit-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  color: var(--va-c-text-2, #64748b);
+  font-size: 0.82rem;
+}
+
+.food-map__visit-meta span {
+  border-radius: 999px;
+  padding: 0.14rem 0.5rem;
+  background: color-mix(in oklab, var(--va-c-bg, #fff) 72%, transparent);
+}
+
+.food-map__visit-link {
+  justify-self: start;
+  font-size: 0.9rem;
 }
 
 .food-map__actions {

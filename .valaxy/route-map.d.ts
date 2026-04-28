@@ -111,6 +111,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/三通黄许王肥肠': RouteRecordInfo<
+      '/posts/三通黄许王肥肠',
+      '/posts/%E4%B8%89%E9%80%9A%E9%BB%84%E8%AE%B8%E7%8E%8B%E8%82%A5%E8%82%A0',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/严重的焦虑与抑郁': RouteRecordInfo<
       '/posts/严重的焦虑与抑郁',
       '/posts/%E4%B8%A5%E9%87%8D%E7%9A%84%E7%84%A6%E8%99%91%E4%B8%8E%E6%8A%91%E9%83%81',
@@ -139,6 +146,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/南门黄孃甜不辣': RouteRecordInfo<
+      '/posts/南门黄孃甜不辣',
+      '/posts/%E5%8D%97%E9%97%A8%E9%BB%84%E5%AD%83%E7%94%9C%E4%B8%8D%E8%BE%A3',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/另世我': RouteRecordInfo<
       '/posts/另世我',
       '/posts/%E5%8F%A6%E4%B8%96%E6%88%91',
@@ -149,6 +163,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/大学第一天——意外的老油条之旅': RouteRecordInfo<
       '/posts/大学第一天——意外的老油条之旅',
       '/posts/%E5%A4%A7%E5%AD%A6%E7%AC%AC%E4%B8%80%E5%A4%A9%E2%80%94%E2%80%94%E6%84%8F%E5%A4%96%E7%9A%84%E8%80%81%E6%B2%B9%E6%9D%A1%E4%B9%8B%E6%97%85',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/天添饭店': RouteRecordInfo<
+      '/posts/天添饭店',
+      '/posts/%E5%A4%A9%E6%B7%BB%E9%A5%AD%E5%BA%97',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -247,6 +268,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/过去': RouteRecordInfo<
       '/posts/过去',
       '/posts/%E8%BF%87%E5%8E%BB',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/顶破天铁板烧': RouteRecordInfo<
+      '/posts/顶破天铁板烧',
+      '/posts/%E9%A1%B6%E7%A0%B4%E5%A4%A9%E9%93%81%E6%9D%BF%E7%83%A7',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -420,6 +448,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/三通黄许王肥肠.md': {
+      routes:
+        | '/posts/三通黄许王肥肠'
+      views:
+        | never
+    }
     'pages/posts/严重的焦虑与抑郁.md': {
       routes:
         | '/posts/严重的焦虑与抑郁'
@@ -444,6 +478,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/南门黄孃甜不辣.md': {
+      routes:
+        | '/posts/南门黄孃甜不辣'
+      views:
+        | never
+    }
     'pages/posts/另世我.md': {
       routes:
         | '/posts/另世我'
@@ -453,6 +493,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/大学第一天——意外的老油条之旅.md': {
       routes:
         | '/posts/大学第一天——意外的老油条之旅'
+      views:
+        | never
+    }
+    'pages/posts/天添饭店.md': {
+      routes:
+        | '/posts/天添饭店'
       views:
         | never
     }
@@ -537,6 +583,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/过去.md': {
       routes:
         | '/posts/过去'
+      views:
+        | never
+    }
+    'pages/posts/顶破天铁板烧.md': {
+      routes:
+        | '/posts/顶破天铁板烧'
       views:
         | never
     }
