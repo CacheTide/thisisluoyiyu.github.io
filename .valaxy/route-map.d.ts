@@ -286,6 +286,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/AE安逸烘焙': RouteRecordInfo<
+      '/posts/AE安逸烘焙',
+      '/posts/AE%E5%AE%89%E9%80%B8%E7%83%98%E7%84%99',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/An-SSH-configuration-error-caused-a-failure-during-blog-deployment': RouteRecordInfo<
       '/posts/An-SSH-configuration-error-caused-a-failure-during-blog-deployment',
       '/posts/An-SSH-configuration-error-caused-a-failure-during-blog-deployment',
@@ -595,6 +602,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/2023年终总结以及我个人杂七杂八的事情1.md': {
       routes:
         | '/posts/2023年终总结以及我个人杂七杂八的事情1'
+      views:
+        | never
+    }
+    'pages/posts/AE安逸烘焙.md': {
+      routes:
+        | '/posts/AE安逸烘焙'
       views:
         | never
     }

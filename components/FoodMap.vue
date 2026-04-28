@@ -950,54 +950,39 @@ function resolveHref(value: string) {
       </dl>
 
       <section v-if="activeSpot.visits.length" class="food-map__timeline" aria-label="探店时间线">
-        <h3>探店时间线</h3>
+        <div class="food-map__timeline-header">
+          <h3>探店时间线</h3>
+          <span>{{ activeSpot.visits.length }} 次</span>
+        </div>
         <ol>
           <li v-for="visit in activeSpot.visits" :key="visit.id" class="food-map__visit">
-            <time v-if="visit.visitedAt" :datetime="visit.visitedAt">{{ visit.visitedAt }}</time>
-            <span v-else class="food-map__visit-date">未知日期</span>
-
-            <p class="food-map__visit-people">
-              <template v-if="visit.people.length">
-                <template v-for="(person, index) in visit.people" :key="`${visit.id}-${person.name}-${index}`">
-                  <span v-if="index">、</span>
-                  <a
-                    v-if="person.url"
-                    :href="person.url"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >{{ person.name }}</a>
-                  <span v-else>{{ person.name }}</span>
-                </template>
-                <span> 吃过这家店</span>
-              </template>
-              <span v-else>记录了一次探店</span>
-            </p>
-
-            <p v-if="visit.note" class="food-map__visit-note">
-              {{ visit.note }}
-            </p>
-
-            <div
-              v-if="hasNumber(visit.rating) || hasNumber(visit.price) || visit.recommend.length"
-              class="food-map__visit-meta"
-            >
-              <span v-if="hasNumber(visit.rating)">{{ formatRating(visit.rating) }}</span>
-              <span v-if="hasNumber(visit.price)">{{ formatPrice(visit.price) }}</span>
-              <span v-if="visit.recommend.length">推荐：{{ formatRecommends(visit.recommend) }}</span>
+            <div class="food-map__visit-date">
+              <time v-if="visit.visitedAt" :datetime="visit.visitedAt">{{ visit.visitedAt }}</time>
+              <span v-else>未知日期</span>
             </div>
 
-            <a
-              v-if="isExternalLink(visit.articlePath)"
-              class="food-map__visit-link"
-              :href="visit.articlePath"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              查看这次记录
-            </a>
-            <RouterLink v-else class="food-map__visit-link" :to="visit.articlePath">
-              查看这次记录
-            </RouterLink>
+            <div class="food-map__visit-body">
+              <p class="food-map__visit-people">
+                <template v-if="visit.people.length">
+                  <template v-for="(person, index) in visit.people" :key="`${visit.id}-${person.name}-${index}`">
+                    <span v-if="index">、</span>
+                    <a
+                      v-if="person.url"
+                      :href="person.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >{{ person.name }}</a>
+                    <span v-else>{{ person.name }}</span>
+                  </template>
+                  <span> 吃过这家店</span>
+                </template>
+                <span v-else>记录了一次探店</span>
+              </p>
+
+              <p v-if="visit.note" class="food-map__visit-note">
+                {{ visit.note }}
+              </p>
+            </div>
           </li>
         </ol>
       </section>
@@ -1323,45 +1308,58 @@ function resolveHref(value: string) {
   padding-top: 0.95rem;
 }
 
-.food-map__timeline h3 {
-  margin: 0 0 0.75rem;
+.food-map__timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.food-map__timeline-header h3 {
+  margin: 0;
   color: var(--va-c-text-1, #0f172a);
   font-size: 1rem;
 }
 
+.food-map__timeline-header span {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  background: color-mix(in oklab, var(--va-c-primary, #f97316) 12%, transparent);
+  color: var(--va-c-primary, #f97316);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
 .food-map__timeline ol {
   display: grid;
-  gap: 0.8rem;
+  gap: 0.65rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .food-map__visit {
-  position: relative;
   display: grid;
-  gap: 0.4rem;
-  border-left: 2px solid color-mix(in oklab, var(--va-c-primary, #f97316) 35%, transparent);
-  padding-left: 0.95rem;
+  grid-template-columns: 7.4rem minmax(0, 1fr);
+  gap: 0.85rem;
+  border: 1px solid color-mix(in oklab, var(--food-map-border) 72%, transparent);
+  border-radius: 0.95rem;
+  padding: 0.75rem 0.85rem;
+  background: color-mix(in oklab, var(--va-c-bg, #fff) 54%, transparent);
 }
 
-.food-map__visit::before {
-  content: '';
-  position: absolute;
-  top: 0.38rem;
-  left: -0.38rem;
-  width: 0.62rem;
-  height: 0.62rem;
-  border: 2px solid color-mix(in oklab, var(--va-c-primary, #f97316) 70%, transparent);
-  border-radius: 999px;
-  background: var(--va-c-bg, #fff);
-}
-
-.food-map__visit time,
 .food-map__visit-date {
+  align-self: start;
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  background: color-mix(in oklab, var(--va-c-bg-soft, rgba(148, 163, 184, 0.12)) 60%, transparent);
   color: var(--va-c-primary, #f97316);
   font-size: 0.9rem;
   font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .food-map__visit-people,
@@ -1371,40 +1369,19 @@ function resolveHref(value: string) {
   line-height: 1.6;
 }
 
-.food-map__visit-people a,
-.food-map__visit-link {
+.food-map__visit-people a {
   color: var(--va-c-primary, #f97316);
   font-weight: 700;
   text-decoration: none;
 }
 
-.food-map__visit-people a:hover,
-.food-map__visit-link:hover {
+.food-map__visit-people a:hover {
   text-decoration: underline;
 }
 
 .food-map__visit-note {
   color: var(--va-c-text-2, #64748b);
   font-size: 0.92rem;
-}
-
-.food-map__visit-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  color: var(--va-c-text-2, #64748b);
-  font-size: 0.82rem;
-}
-
-.food-map__visit-meta span {
-  border-radius: 999px;
-  padding: 0.14rem 0.5rem;
-  background: color-mix(in oklab, var(--va-c-bg, #fff) 72%, transparent);
-}
-
-.food-map__visit-link {
-  justify-self: start;
-  font-size: 0.9rem;
 }
 
 .food-map__actions {
@@ -1692,6 +1669,20 @@ function resolveHref(value: string) {
   .food-map__active-card h2 {
     font-size: 1.18rem;
     line-height: 1.35;
+  }
+
+  .food-map__timeline-header {
+    align-items: flex-start;
+  }
+
+  .food-map__visit {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    padding: 0.75rem;
+  }
+
+  .food-map__visit-date {
+    justify-self: start;
   }
 
   .food-map__actions {
