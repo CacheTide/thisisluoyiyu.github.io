@@ -132,6 +132,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/代四孃牛华豆腐脑': RouteRecordInfo<
+      '/posts/代四孃牛华豆腐脑',
+      '/posts/%E4%BB%A3%E5%9B%9B%E5%AD%83%E7%89%9B%E5%8D%8E%E8%B1%86%E8%85%90%E8%84%91',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/关于性别认同--为何想成为药娘呢': RouteRecordInfo<
       '/posts/关于性别认同--为何想成为药娘呢',
       '/posts/%E5%85%B3%E4%BA%8E%E6%80%A7%E5%88%AB%E8%AE%A4%E5%90%8C--%E4%B8%BA%E4%BD%95%E6%83%B3%E6%88%90%E4%B8%BA%E8%8D%AF%E5%A8%98%E5%91%A2',
@@ -146,6 +153,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/南京汤包': RouteRecordInfo<
+      '/posts/南京汤包',
+      '/posts/%E5%8D%97%E4%BA%AC%E6%B1%A4%E5%8C%85',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/南门黄孃甜不辣': RouteRecordInfo<
       '/posts/南门黄孃甜不辣',
       '/posts/%E5%8D%97%E9%97%A8%E9%BB%84%E5%AD%83%E7%94%9C%E4%B8%8D%E8%BE%A3',
@@ -156,6 +170,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/另世我': RouteRecordInfo<
       '/posts/另世我',
       '/posts/%E5%8F%A6%E4%B8%96%E6%88%91',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/嘉州海汇源老烧麦店': RouteRecordInfo<
+      '/posts/嘉州海汇源老烧麦店',
+      '/posts/%E5%98%89%E5%B7%9E%E6%B5%B7%E6%B1%87%E6%BA%90%E8%80%81%E7%83%A7%E9%BA%A6%E5%BA%97',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -230,9 +251,30 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/江二娃串串香': RouteRecordInfo<
+      '/posts/江二娃串串香',
+      '/posts/%E6%B1%9F%E4%BA%8C%E5%A8%83%E4%B8%B2%E4%B8%B2%E9%A6%99',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/王少龙火锅': RouteRecordInfo<
+      '/posts/王少龙火锅',
+      '/posts/%E7%8E%8B%E5%B0%91%E9%BE%99%E7%81%AB%E9%94%85',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/签签万万': RouteRecordInfo<
       '/posts/签签万万',
       '/posts/%E7%AD%BE%E7%AD%BE%E4%B8%87%E4%B8%87',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/米林爸爸可颂': RouteRecordInfo<
+      '/posts/米林爸爸可颂',
+      '/posts/%E7%B1%B3%E6%9E%97%E7%88%B8%E7%88%B8%E5%8F%AF%E9%A2%82',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -258,6 +300,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/赵鸭子': RouteRecordInfo<
+      '/posts/赵鸭子',
+      '/posts/%E8%B5%B5%E9%B8%AD%E5%AD%90',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/跨年': RouteRecordInfo<
       '/posts/跨年',
       '/posts/%E8%B7%A8%E5%B9%B4',
@@ -272,9 +321,23 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/阙纪粑店': RouteRecordInfo<
+      '/posts/阙纪粑店',
+      '/posts/%E9%98%99%E7%BA%AA%E7%B2%91%E5%BA%97',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/顶破天铁板烧': RouteRecordInfo<
       '/posts/顶破天铁板烧',
       '/posts/%E9%A1%B6%E7%A0%B4%E5%A4%A9%E9%93%81%E6%9D%BF%E7%83%A7',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/黄小花咔丝豆腐干': RouteRecordInfo<
+      '/posts/黄小花咔丝豆腐干',
+      '/posts/%E9%BB%84%E5%B0%8F%E8%8A%B1%E5%92%94%E4%B8%9D%E8%B1%86%E8%85%90%E5%B9%B2',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -389,7 +452,7 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'node_modules/.pnpm/valaxy@0.27.0_@babel+parser@7.29.2_@nuxt+kit@3.21.2_@types+markdown-it@14.1.2_@types+no_1e16fa9c1b9aa620f3ddbd66da44eb67/node_modules/valaxy/client/pages/[...path].vue': {
+    'node_modules/.pnpm/valaxy@0.27.0_@babel+parser@7.29.2_@nuxt+kit@3.21.2_@types+markdown-it@14.1.2_@types+node@25._rslroq7kziv7z3p2bqsirmkujm/node_modules/valaxy/client/pages/[...path].vue': {
       routes:
         | '/[...path]'
       views:
@@ -473,6 +536,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/代四孃牛华豆腐脑.md': {
+      routes:
+        | '/posts/代四孃牛华豆腐脑'
+      views:
+        | never
+    }
     'pages/posts/关于性别认同--为何想成为药娘呢.md': {
       routes:
         | '/posts/关于性别认同--为何想成为药娘呢'
@@ -485,6 +554,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/南京汤包.md': {
+      routes:
+        | '/posts/南京汤包'
+      views:
+        | never
+    }
     'pages/posts/南门黄孃甜不辣.md': {
       routes:
         | '/posts/南门黄孃甜不辣'
@@ -494,6 +569,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/另世我.md': {
       routes:
         | '/posts/另世我'
+      views:
+        | never
+    }
+    'pages/posts/嘉州海汇源老烧麦店.md': {
+      routes:
+        | '/posts/嘉州海汇源老烧麦店'
       views:
         | never
     }
@@ -557,9 +638,27 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/江二娃串串香.md': {
+      routes:
+        | '/posts/江二娃串串香'
+      views:
+        | never
+    }
+    'pages/posts/王少龙火锅.md': {
+      routes:
+        | '/posts/王少龙火锅'
+      views:
+        | never
+    }
     'pages/posts/签签万万.md': {
       routes:
         | '/posts/签签万万'
+      views:
+        | never
+    }
+    'pages/posts/米林爸爸可颂.md': {
+      routes:
+        | '/posts/米林爸爸可颂'
       views:
         | never
     }
@@ -581,6 +680,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/赵鸭子.md': {
+      routes:
+        | '/posts/赵鸭子'
+      views:
+        | never
+    }
     'pages/posts/跨年.md': {
       routes:
         | '/posts/跨年'
@@ -593,9 +698,21 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'pages/posts/阙纪粑店.md': {
+      routes:
+        | '/posts/阙纪粑店'
+      views:
+        | never
+    }
     'pages/posts/顶破天铁板烧.md': {
       routes:
         | '/posts/顶破天铁板烧'
+      views:
+        | never
+    }
+    'pages/posts/黄小花咔丝豆腐干.md': {
+      routes:
+        | '/posts/黄小花咔丝豆腐干'
       views:
         | never
     }
