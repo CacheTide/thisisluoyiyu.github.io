@@ -342,7 +342,7 @@ gpgconf --launch gpg-agent
 f12放控制台用的
 
 ......别的好玩功能还在研究施工中
-
+```
   input {
       keyboard {
           xkb {
@@ -673,3 +673,4 @@ f12放控制台用的
           spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
       }
   }
+```
