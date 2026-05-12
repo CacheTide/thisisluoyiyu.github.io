@@ -59,7 +59,7 @@ export default defineValaxyConfig<UserThemeConfig>({
       {
         name: '我的小伙伴们',
         url: '/links/',
-        icon: 'i-ri-genderless-line',
+        icon: 'i-ri-link',
         color: 'dodgerblue',
       },
       {
