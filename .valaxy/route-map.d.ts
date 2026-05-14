@@ -391,6 +391,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/guide-to-installing-and-configuring-niri-on-nixos': RouteRecordInfo<
+      '/posts/guide-to-installing-and-configuring-niri-on-nixos',
+      '/posts/guide-to-installing-and-configuring-niri-on-nixos',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro': RouteRecordInfo<
       '/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro',
       '/posts/Hidden-root-tinkering-notes-for-the-Pixel-7-Pro',
@@ -762,6 +769,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/Free-blog-setup-using-Hexo-and-GitHub.md': {
       routes:
         | '/posts/Free-blog-setup-using-Hexo-and-GitHub'
+      views:
+        | never
+    }
+    'pages/posts/guide-to-installing-and-configuring-niri-on-nixos.md': {
+      routes:
+        | '/posts/guide-to-installing-and-configuring-niri-on-nixos'
       views:
         | never
     }
