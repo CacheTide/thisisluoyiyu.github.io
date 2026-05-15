@@ -53,7 +53,7 @@
 /* --- 文章阅读体验优化 (Added by GitHub Copilot) --- */
 
 /* 1. 引入霞鹜文楷字体 (LXGW WenKai Screen) - 屏幕阅读优化的楷体 */
-@import url('https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css');
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont/style.css');
 
 /* 定义字体变量 */
 :root {
@@ -165,7 +165,8 @@ html.dark .markdown-body {
 
 /* 3. 代码块优化 */
 /* 字体引入：JetBrains Mono (编程字体) */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/700.css');
 
 /* 修复 Valaxy/Vitepress 默认的代码块包裹器带来的多余直角背景白边/黑边 */
 .markdown-body div[class*="language-"],
@@ -298,6 +299,12 @@ html.dark:root .markdown-body pre.shiki:hover {
 html.dark .markdown-body pre::-webkit-scrollbar-thumb,
 html.dark:root .markdown-body pre.shiki::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 修复复制按钮上浮错位：pre.margin-top(2em×0.9rem≈1.8rem) 使按钮偏移至 pre 上方空白，
+   覆盖 top 为 2rem 将按钮落入标题栏（1.8rem~4.6rem）的视觉中央 */
+.markdown-body [class*='language-'] > button.copy {
+  top: 2rem;
 }
 
 .dark .va-card .content, .dark .post-card .content, .dark .post .post-content {
@@ -436,7 +443,7 @@ html.dark:root .markdown-body pre.shiki::-webkit-scrollbar-thumb {
   border-radius: var(--radius-detail-card) !important;
   box-shadow: -8px 8px 32px -8px rgba(0, 0, 0, 0.08) !important;
   border: 1px solid rgba(0,0,0,0.03); /* 极细微边框 */
-  
+
   /* 统一：添加高级毛玻璃背景与立体边缘 */
   background: var(--card-bg) !important;
   backdrop-filter: blur(16px) saturate(140%) !important;
@@ -1047,6 +1054,5 @@ html {
 html.dark {
   color-scheme: dark;
 }
-
 
 

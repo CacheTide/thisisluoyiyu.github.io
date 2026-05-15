@@ -11,6 +11,18 @@
     },
     "items": [
         {
+            "id": "https://cachetide.top/posts/guide-to-installing-and-configuring-niri-on-nixos",
+            "content_html": "<p>由于之前用arch的时候天天报错红温了，于是决定试试nixos，参考于<a href=\"https://www.sakimidare.top/posts/niri-manual/\">https://www.sakimidare.top/posts/niri-manual/</a> 的niri配置，在此基础上进行修改</p>\n<br/><p>访问 <a href=\"https://cachetide.top/posts/guide-to-installing-and-configuring-niri-on-nixos\" target=\"_blank\">https://cachetide.top/posts/guide-to-installing-and-configuring-niri-on-nixos</a> 阅读全文。</p>",
+            "url": "https://cachetide.top/posts/guide-to-installing-and-configuring-niri-on-nixos",
+            "title": "Nixos+Niri折腾笔记",
+            "date_modified": "2026-05-14T11:13:25.000Z",
+            "date_published": "2026-05-14T11:13:25.000Z",
+            "author": {
+                "name": "编汐译梦CacheTide",
+                "url": "https://valaxy.site"
+            }
+        },
+        {
             "id": "https://cachetide.top/posts/YubiKey-Troubleshooting-Notes",
             "content_html": "<p><em>汐:“我买了一个100块钱实体密钥。”</em></p>\n<p><em>misaka:”为什么不买yubico的，也100多。“</em></p>\n<p><em>汐（看淘宝）:”670也叫100多？“</em></p>\n<p>*misaka:”我忘了我花的新西兰元了，</p>\n<br/><p>访问 <a href=\"https://cachetide.top/posts/YubiKey-Troubleshooting-Notes\" target=\"_blank\">https://cachetide.top/posts/YubiKey-Troubleshooting-Notes</a> 阅读全文。</p>",
             "url": "https://cachetide.top/posts/YubiKey-Troubleshooting-Notes",

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: H3C NX30pro 新版固件（V100R010、V100R009）免拆机刷机
-tags: [刷机,路由器,Linxu]
+tags: [刷机,路由器,linux]
 categories: [技术]
 date: 2026-01-21 17:47:02
 cover: https://www.cachetide.top/header2.jpg
