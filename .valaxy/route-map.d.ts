@@ -391,6 +391,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/git-and-lazygit-note': RouteRecordInfo<
+      '/posts/git-and-lazygit-note',
+      '/posts/git-and-lazygit-note',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/guide-to-installing-and-configuring-niri-on-nixos': RouteRecordInfo<
       '/posts/guide-to-installing-and-configuring-niri-on-nixos',
       '/posts/guide-to-installing-and-configuring-niri-on-nixos',
@@ -769,6 +776,12 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/Free-blog-setup-using-Hexo-and-GitHub.md': {
       routes:
         | '/posts/Free-blog-setup-using-Hexo-and-GitHub'
+      views:
+        | never
+    }
+    'pages/posts/git-and-lazygit-note.md': {
+      routes:
+        | '/posts/git-and-lazygit-note'
       views:
         | never
     }
