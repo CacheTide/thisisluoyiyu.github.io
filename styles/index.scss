@@ -52,8 +52,7 @@
 
 /* --- 文章阅读体验优化 (Added by GitHub Copilot) --- */
 
-/* 1. 引入霞鹜文楷字体 (LXGW WenKai Screen) - 屏幕阅读优化的楷体 */
-@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont/style.css');
+/* 1. 霞鹜文楷字体通过 HTML <head> 的 <link> 并行加载（见 vite.config.ts），避免 @import 串行等待 */
 
 /* 定义字体变量 */
 :root {
@@ -164,9 +163,7 @@ html.dark .markdown-body {
 }
 
 /* 3. 代码块优化 */
-/* 字体引入：JetBrains Mono (编程字体) */
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css');
-@import url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/700.css');
+/* JetBrains Mono 同样通过 HTML <head> 的 <link> 并行加载（见 vite.config.ts） */
 
 /* 修复 Valaxy/Vitepress 默认的代码块包裹器带来的多余直角背景白边/黑边 */
 .markdown-body div[class*="language-"],

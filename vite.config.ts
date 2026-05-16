@@ -3,7 +3,7 @@ import { defineConfig, loadEnv } from 'vite'
 
 // import RemoteAssets from 'vite-plugin-remote-assets'
 
-// 注入 CDN 预连接提示，加速 @import 字体的 DNS/TCP 握手阶段
+// 注入字体 <link> 标签，与主 CSS 并行加载（替代 CSS @import 的串行加载）
 const criticalResourceHints: Plugin = {
   name: 'critical-resource-hints',
   transformIndexHtml: {
@@ -14,6 +14,9 @@ const criticalResourceHints: Plugin = {
         [
           '<meta charset="UTF-8">',
           '<link rel="preconnect" href="https://cdn.jsdelivr.net">',
+          '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont/style.css">',
+          '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/400.css">',
+          '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/700.css">',
         ].join('\n  '),
       )
     },
