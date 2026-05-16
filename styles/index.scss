@@ -201,10 +201,8 @@ html:root .markdown-body pre.shiki {
   font-size: 0.9rem;
   line-height: 1.7; /* 增加行高，提升代码可读性 */
 
-  /* 替换为进一步透明的偏白透视背景，让后面图案更清晰，同时保留毛玻璃模糊确保文字可读 */
-  background-color: rgba(255, 255, 255, 0.65) !important;
-  backdrop-filter: blur(25px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+  /* 代码块后面是白色卡片背景，对白色模糊视觉无变化，去掉 backdrop-filter 消除 57 个 GPU 合成层 */
+  background-color: rgba(255, 255, 255, 0.85) !important;
 
   /* 在透白的背景上，去除大面积泛白光，加深一点暗影让较深色代码更锐利 */
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
