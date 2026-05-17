@@ -1,0 +1,436 @@
+{
+  "schema": "https://valaxy.site/schemas/food-map.v1.json",
+  "schemaVersion": 1,
+  "generator": {
+    "name": "valaxy-addon-food-map",
+    "version": "0.1.8"
+  },
+  "owner": {
+    "name": "编汐译梦CacheTide",
+    "avatar": "/favicon.jpg"
+  },
+  "site": {
+    "title": "云边的小旅店",
+    "url": "https://cachetide.top/",
+    "homepage": "https://cachetide.top/"
+  },
+  "generatedAt": "2026-05-17T14:47:20.508Z",
+  "coordinateSystem": "GCJ-02",
+  "spots": [
+    {
+      "id": "AE安逸烘焙-104.088238-30.656741",
+      "name": "AE安逸烘焙",
+      "city": "成都",
+      "address": "锦江区海北顺城街65号附5号",
+      "lng": 104.088238,
+      "lat": 30.656741,
+      "coordinateSystem": "GCJ-02",
+      "category": "可颂",
+      "price": 25,
+      "rating": 4.1,
+      "recommend": [
+        "杏仁焦糖可颂"
+      ],
+      "articleUrl": "https://cachetide.top/posts/AE安逸烘焙/",
+      "amapUrl": "https://surl.amap.com/h8ELVfM1mbS7",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "顶破天铁板烧-104.103391-30.635586",
+      "name": "顶破天铁板烧",
+      "city": "成都",
+      "address": "锦江区海椒市街15号5栋附1号",
+      "lng": 104.103391,
+      "lat": 30.635586,
+      "coordinateSystem": "GCJ-02",
+      "category": "铁板烧",
+      "price": 40,
+      "rating": 4.2,
+      "articleUrl": "https://cachetide.top/posts/顶破天铁板烧/",
+      "amapUrl": "https://surl.amap.com/2OrJBwedeMN",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "南门黄孃甜不辣-104.061803-30.634943",
+      "name": "南门黄孃甜不辣",
+      "city": "成都",
+      "address": "武侯区电信南街九如村33号院旁",
+      "lng": 104.061803,
+      "lat": 30.634943,
+      "coordinateSystem": "GCJ-02",
+      "category": "炸物",
+      "price": 35,
+      "rating": 4,
+      "articleUrl": "https://cachetide.top/posts/南门黄孃甜不辣/",
+      "amapUrl": "https://surl.amap.com/fldNxbk1r1eI",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "天添饭店-104.064945-30.626993",
+      "name": "天添饭店",
+      "city": "成都",
+      "address": "武侯区玉林东街16号附16一19号",
+      "lng": 104.064945,
+      "lat": 30.626993,
+      "coordinateSystem": "GCJ-02",
+      "category": "中餐",
+      "price": 65,
+      "rating": 3.9,
+      "articleUrl": "https://cachetide.top/posts/天添饭店/",
+      "amapUrl": "https://surl.amap.com/2xK7Se61leiV",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "江二娃串串香-106.492629-29.530971",
+      "name": "江二娃串串香",
+      "city": "重庆",
+      "address": "九龙坡区夜市街科园四路153号(南方花园酒店旁)",
+      "lng": 106.492629,
+      "lat": 29.530971,
+      "coordinateSystem": "GCJ-02",
+      "category": "串串香",
+      "price": 60,
+      "rating": 4.3,
+      "articleUrl": "https://cachetide.top/posts/江二娃串串香/",
+      "amapUrl": "https://surl.amap.com/5T9bd8Kf5d5",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "南京汤包-106.574985-29.558542",
+      "name": "南京汤包",
+      "city": "重庆",
+      "address": "渝中区邹容路118号都市广场B座B1层",
+      "lng": 106.574985,
+      "lat": 29.558542,
+      "coordinateSystem": "GCJ-02",
+      "category": "灌汤包",
+      "price": 18,
+      "rating": 4.3,
+      "articleUrl": "https://cachetide.top/posts/南京汤包/",
+      "amapUrl": "https://surl.amap.com/6sQ3WGeB7MI",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "王少龙火锅-106.462462-29.561182",
+      "name": "王少龙火锅",
+      "city": "重庆",
+      "address": "沙坪坝沙南街8号",
+      "lng": 106.462462,
+      "lat": 29.561182,
+      "coordinateSystem": "GCJ-02",
+      "category": "火锅",
+      "price": 90,
+      "rating": 4.2,
+      "articleUrl": "https://cachetide.top/posts/王少龙火锅/",
+      "amapUrl": "https://surl.amap.com/5OpcEjwb95l",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "米林爸爸可颂-106.538198-29.589944",
+      "name": "米林爸爸可颂",
+      "city": "重庆",
+      "address": "两江新区黄龙路33号A幢2-3第1层",
+      "lng": 106.538198,
+      "lat": 29.589944,
+      "coordinateSystem": "GCJ-02",
+      "category": "可颂",
+      "price": 35,
+      "rating": 4.5,
+      "recommend": [
+        "三重开心果",
+        "绿豆咸蛋黄肉松"
+      ],
+      "articleUrl": "https://cachetide.top/posts/米林爸爸可颂/",
+      "amapUrl": "https://surl.amap.com/2h058uqJ1rb90",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "三通黄许王肥肠-104.414251-31.229440",
+      "name": "三通黄许王肥肠",
+      "city": "德阳",
+      "address": "旌阳区德阳国际铁路物流港管理委员会西南侧250米",
+      "lng": 104.414251,
+      "lat": 31.22944,
+      "coordinateSystem": "GCJ-02",
+      "category": "中餐",
+      "price": 30,
+      "rating": 4.4,
+      "recommend": [
+        "肥肠，炒猪头肉，炒回锅肉"
+      ],
+      "articleUrl": "https://cachetide.top/posts/三通黄许王肥肠/",
+      "amapUrl": "https://surl.amap.com/2nmTxA6kcve",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "代四孃牛华豆腐脑-103.762785-29.554971",
+      "name": "代四孃牛华豆腐脑",
+      "city": "乐山",
+      "address": "市中区县街27-29号",
+      "lng": 103.762785,
+      "lat": 29.554971,
+      "coordinateSystem": "GCJ-02",
+      "category": "豆腐脑",
+      "price": 15,
+      "rating": 4.1,
+      "articleUrl": "https://cachetide.top/posts/代四孃牛华豆腐脑/",
+      "amapUrl": "https://surl.amap.com/5iNsfGiNcSR",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "嘉州海汇源老烧麦店-103.766896-29.553968",
+      "name": "嘉州海汇源老烧麦店",
+      "city": "乐山",
+      "address": "东大街108号",
+      "lng": 103.766896,
+      "lat": 29.553968,
+      "coordinateSystem": "GCJ-02",
+      "category": "烧卖",
+      "price": 25,
+      "rating": 4.2,
+      "articleUrl": "https://cachetide.top/posts/嘉州海汇源老烧麦店/",
+      "amapUrl": "https://surl.amap.com/5E7A9KiLgkm",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "赵鸭子-103.767509-29.553897",
+      "name": "赵鸭子",
+      "city": "乐山",
+      "address": "市中区东大街96号(建川药品对面)",
+      "lng": 103.767509,
+      "lat": 29.553897,
+      "coordinateSystem": "GCJ-02",
+      "category": "甜皮鸭",
+      "price": 40,
+      "rating": 4.1,
+      "articleUrl": "https://cachetide.top/posts/赵鸭子/",
+      "amapUrl": "https://surl.amap.com/5Ievgv0X8g0",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "黄小花咔丝豆腐干-103.764490-29.554079",
+      "name": "黄小花咔丝豆腐干",
+      "city": "乐山",
+      "address": "市中区婺嫣街53号(小屋里对面)",
+      "lng": 103.76449,
+      "lat": 29.554079,
+      "coordinateSystem": "GCJ-02",
+      "category": "小吃",
+      "price": 6,
+      "rating": 4.3,
+      "articleUrl": "https://cachetide.top/posts/黄小花咔丝豆腐干/",
+      "amapUrl": "https://surl.amap.com/5qJzz2a1722v",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "阙纪粑店-103.764408-29.554098",
+      "name": "阙纪粑店",
+      "city": "乐山",
+      "address": "石雁儿(云顶酒楼对面)",
+      "lng": 103.764408,
+      "lat": 29.554098,
+      "coordinateSystem": "GCJ-02",
+      "category": "糌粑",
+      "price": 6,
+      "rating": 4.3,
+      "recommend": [
+        "芽菜鲜肉"
+      ],
+      "articleUrl": "https://cachetide.top/posts/阙纪粑店/",
+      "amapUrl": "https://surl.amap.com/5zkTL5M1y9T0",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "薛记正宗哩脊肉-104.753008-31.460040",
+      "name": "薛记正宗哩脊肉",
+      "city": "绵阳",
+      "address": "涪城区公园路28-2号",
+      "lng": 104.753008,
+      "lat": 31.46004,
+      "coordinateSystem": "GCJ-02",
+      "category": "炸串",
+      "price": 12,
+      "rating": 4.6,
+      "recommend": [
+        "里脊"
+      ],
+      "articleUrl": "https://cachetide.top/posts/薛记正宗哩脊肉/",
+      "amapUrl": "https://surl.amap.com/fSvAqC108y6",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "常青井口毛肚火锅-106.106155-30.808355",
+      "name": "常青井口毛肚火锅",
+      "city": "南充",
+      "address": "顺庆区正阳东路64号-54",
+      "lng": 106.106155,
+      "lat": 30.808355,
+      "coordinateSystem": "GCJ-02",
+      "category": "火锅",
+      "price": 85,
+      "rating": 4,
+      "articleUrl": "https://cachetide.top/posts/常青井口毛肚火锅/",
+      "amapUrl": "https://surl.amap.com/9zThzk1w5Sx",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "山城饭局市井江湖菜-106.117682-30.788936",
+      "name": "山城饭局市井江湖菜",
+      "city": "南充",
+      "address": "高坪区优品道曦岸峰景南门东70米",
+      "lng": 106.117682,
+      "lat": 30.788936,
+      "coordinateSystem": "GCJ-02",
+      "category": "江湖菜",
+      "price": 70,
+      "rating": 4,
+      "articleUrl": "https://cachetide.top/posts/山城饭局市井江湖菜/",
+      "amapUrl": "https://surl.amap.com/cHx0pkl3iZ",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "签签万万-106.077575-30.812219",
+      "name": "签签万万",
+      "city": "南充",
+      "address": "顺庆区新豪天地4号楼1层183号",
+      "lng": 106.077575,
+      "lat": 30.812219,
+      "coordinateSystem": "GCJ-02",
+      "category": "炸串",
+      "price": 50,
+      "rating": 4.2,
+      "articleUrl": "https://cachetide.top/posts/签签万万/",
+      "amapUrl": "https://surl.amap.com/gxcVNdA9cQu",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    },
+    {
+      "id": "新概念双椒兔-101.739273-26.593550",
+      "name": "新概念双椒兔",
+      "city": "攀枝花",
+      "address": "隆庆路359号",
+      "lng": 101.739273,
+      "lat": 26.59355,
+      "coordinateSystem": "GCJ-02",
+      "category": "中餐",
+      "price": 58,
+      "rating": 4.2,
+      "articleUrl": "https://cachetide.top/posts/新概念双椒兔/",
+      "amapUrl": "https://surl.amap.com/6CHVTOGG0Rc",
+      "source": {
+        "id": "local",
+        "name": "云边的小旅店",
+        "homepage": "https://cachetide.top/",
+        "jsonUrl": "https://cachetide.top/food-map/index.json",
+        "type": "local"
+      }
+    }
+  ]
+}
