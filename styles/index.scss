@@ -539,78 +539,94 @@ html.dark:root .markdown-body pre.shiki::-webkit-scrollbar-thumb {
   background: var(--va-c-primary); /* 悬停时显示主题色滚动条 */
 }
 
-/* -------- 文章目录 (TOC) 高级交互美化 -------- */
+/* -------- 文章目录 (TOC) - 方向C：浮动胶囊式 -------- */
 
-/* 1. 美化目录顶部标题 */
+/* 1. 标题：渐变文字 + 下方细分割线 */
 .yun-aside h2 {
   position: relative;
   display: inline-block;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-  font-size: 1.15rem !important;
+  font-size: 1rem !important;
   font-weight: 700 !important;
-  background: linear-gradient(90deg, var(--va-c-primary), #8a2be2); /* 渐变文字 */
+  letter-spacing: 0.04em;
+  padding-bottom: 6px;
+  margin-bottom: 10px !important;
+  background: linear-gradient(90deg, var(--va-c-primary), #a78bfa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* 标题下方的精致渐变分割线 */
 .yun-aside h2::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 40%;
-  height: 3px;
+  width: 100%;
+  height: 1.5px;
   border-radius: 2px;
   background: linear-gradient(90deg, var(--va-c-primary), transparent);
 }
 
-/* 2. 目录结构的基础流线 */
+/* outline-title 与 h2 重复，隐藏 */
+.outline-title {
+  display: none !important;
+}
+
+/* 2. 根容器 */
 .va-toc {
-  position: relative;
-  padding-left: 0.8rem;
-  border-left: 1px solid rgba(0, 0, 0, 0.06); /* 更加克制的连线 */
+  list-style: none !important;
+  padding-left: 0;
 }
 
-html.dark .va-toc {
-  border-left: 1px solid rgba(255, 255, 255, 0.08); /* 暗色模式弱化线条 */
+/* 3. 层级字号（通过字号+缩进区分，不用透明度） */
+.va-toc.root > .va-toc-item > .outline-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.va-toc .nested > .va-toc-item > .outline-link {
+  font-size: 0.86rem;
+}
+.va-toc .nested .nested > .va-toc-item > .outline-link {
+  font-size: 0.81rem;
 }
 
-/* 3. 目录项的高级悬停与激活态 */
+/* 4. 链接通用基础：完整胶囊形状 */
 .va-toc .outline-link {
   display: block;
-  padding: 4px 12px;
-  margin: 4px 0;
-  border-radius: 8px; /* 轻拟态圆角 */
-  font-size: 0.92rem;
+  padding: 5px 12px;
+  margin: 2px 0;
+  border-radius: 8px;
   color: var(--va-c-text-2);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
+  white-space: normal !important;
+  word-break: break-word;
+  transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
-/* 悬停交互：右移 + 浅色背景 */
+/* 5. 悬停态：胶囊浮起 + 淡光晕 */
 .va-toc .outline-link:hover {
-  color: var(--va-c-primary);
-  background-color: rgba(150, 150, 150, 0.08);
-  transform: translateX(4px); /* 悬停时优雅右移 */
+  color: var(--va-c-primary) !important;
+  background: color-mix(in oklab, var(--va-c-primary) 9%, transparent);
+  box-shadow: 0 2px 10px -3px color-mix(in oklab, var(--va-c-primary) 30%, transparent);
+  transform: translateY(-1px);
 }
 
-/* 激活状态交互：拟态按钮背景 + 粗体 */
+/* 6. 激活态：实心胶囊 + 更强光晕 */
 .va-toc .outline-link.active {
   color: var(--va-c-primary) !important;
   font-weight: 600;
-  background-color: color-mix(in oklab, var(--va-c-primary) 12%, transparent);
-  box-shadow: 0 2px 8px -2px color-mix(in oklab, var(--va-c-primary) 20%, transparent);
-  transform: scale(1.02); /* 稍微放大突出重点 */
+  background: color-mix(in oklab, var(--va-c-primary) 16%, transparent);
+  box-shadow: 0 4px 16px -4px color-mix(in oklab, var(--va-c-primary) 50%, transparent);
+  transform: none;
 }
 
-/* 官方的目录指示器 (Marker) 美化 */
+/* 7. 嵌套层缩进（仅缩进，无连接线） */
+.va-toc .nested {
+  padding-left: 12px !important;
+  margin-left: 0;
+  border-left: none;
+}
+
+/* 隐藏随动 marker */
 .outline-marker {
-  width: 4px !important;
-  border-radius: 4px !important;
-  background: linear-gradient(180deg, var(--va-c-primary), #ff6b81) !important; /* 渐变指示器 */
-  box-shadow: 0 0 10px color-mix(in oklab, var(--va-c-primary) 40%, transparent) !important;
+  display: none !important;
 }
 
 /* ------------------------------------------- */
@@ -962,75 +978,10 @@ main,
 
 
 
-/* --- 5. 目录(TOC)层级与样式优化 --- */
-.va-toc {
-  /* 去除默认列表样式 */
-  list-style: none !important;
-  padding-left: 0;
-  
-  .va-toc-item {
-    line-height: 1.8;
-    margin: 4px 0;
-    
-    .outline-link {
-      display: block;
-      color: var(--va-c-text-2) !important; /* 使用普通文字颜色 */
-      font-size: 0.95rem;
-      border-radius: 6px;
-      padding: 4px 10px;
-      transition: all 0.3s ease;
-      position: relative;
-      /* 若有多级标题则允许折行 */
-      white-space: normal !important;
-      word-break: break-word;
-      
-      &:hover {
-        background-color: var(--va-c-bg-soft);
-        color: var(--va-c-primary) !important;
-        transform: translateX(4px);
-      }
-      
-      &.active {
-        color: var(--va-c-primary) !important;
-        font-weight: 600;
-        background-color: color-mix(in oklab, var(--va-c-primary) 10%, transparent);
-        
-        &::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 20%;
-          height: 60%;
-          width: 3px;
-          background-color: var(--va-c-primary);
-          border-radius: 4px;
-        }
-      }
-    }
-  }
-
-  /* 嵌套层级的缩进与连接线效果 */
-  ul.nested {
-    padding-left: 14px !important;
-    margin-left: 8px;
-    border-left: 1px dashed var(--va-c-divider); /* 添加虚线引导线 */
-  }
-}
-
-/* 保证大纲标题的好看程度 */
-.outline-title {
-  font-size: 1.1rem !important;
-  font-weight: bold;
-  border-bottom: 2px solid var(--va-c-primary);
-  display: inline-block;
-  padding-bottom: 4px;
-  margin-bottom: 12px;
-}
-
-
-/* 隐藏自带的随动指示器，因为它不支持多行标题计算导致偏移，使用上面 .active 的自身伪类代替 */
-.outline-marker {
-  display: none !important;
+/* --- 5. 目录(TOC)条目行高 --- */
+.va-toc .va-toc-item {
+  line-height: 1.7;
+  margin: 2px 0;
 }
 
 
